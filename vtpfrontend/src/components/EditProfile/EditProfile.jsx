@@ -19,7 +19,7 @@ const CustomModal = styled(Modal)`
 
 const ModalContent = styled.div`
   width: 500px;
-  height: 450px;
+  height: 500px;
   flex-shrink: 0;
   border-radius: 16.477px;
   background: #fff;
@@ -75,9 +75,9 @@ export default function EditProfile(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     //Take this auth Toekn from localStorage, with be set on login,
-    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAwOTA5NjEsImV4cCI6MTcxMDA5NDU2MX0.o4soHPEQnoJjq90AjKOKfr9X6BAzI2h32_jWHP2igGk";
+    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxMDM3OTgsImV4cCI6MTcxMDEwNzM5OH0.J2y3mRBbFykUPFwnZlWf7iLBNmkr3ECgXBIECacWQHM";
     const bodyData={};
-    
+
     for (const key in formData) {
       // Skip the password field if it's empty
       if (key === 'password' && !formData[key]) {
@@ -125,8 +125,8 @@ export default function EditProfile(props) {
   };
 
   return (
-    <div>
-      <div onClick={openProfileModal} className="button">
+    <>
+      <div onClick={openProfileModal} className="hero-button">
         Edit Profile
       </div>
 
@@ -184,6 +184,6 @@ export default function EditProfile(props) {
           </form>
         </ModalContent>
       </CustomModal>
-    </div>
+    </>
   );
 }
