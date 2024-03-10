@@ -38,7 +38,7 @@ const ModalContent = styled.div`
 export default function EditProfile(props) {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
-    email_id: props.email,
+    email_id: props.email_id,
     password: "",
     name: props.name,
   });
@@ -46,11 +46,11 @@ export default function EditProfile(props) {
 
   useEffect(() => {
     setFormData({
-      email_id: props.email,
+      email_id: props.email_id,
       password: "",
       name: props.name,
     });
-  }, [props.email, props.name]);
+  }, [props.email_id, props.name]);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -75,15 +75,26 @@ export default function EditProfile(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     //Take this auth Toekn from localStorage, with be set on login,
-    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWU5NmI2YTNkMzkwNGJhYWVlNWIxM2IiLCJpYXQiOjE3MTAwODc2NTcsImV4cCI6MTcxMDA5MTI1N30.NRUxrnBmEPx0W6TmsoDoIY7HU-KHOClr4lDea6ZSfgo";
+    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAwOTA5NjEsImV4cCI6MTcxMDA5NDU2MX0.o4soHPEQnoJjq90AjKOKfr9X6BAzI2h32_jWHP2igGk";
     const bodyData={};
+    
     for (const key in formData) {
+      // Skip the password field if it's empty
+      if (key === 'password' && !formData[key]) {
+        continue;
+      }
       if (formData[key] !== props[key]) {
         bodyData[key] = formData[key];
       }
     }
 
     console.log(bodyData)
+
+    // Check if bodyData is empty
+    if (Object.keys(bodyData).length === 0) {
+      alert("No field is changed");
+      return; // Stop further execution
+    }
 
     try {
       const response = await fetch(
