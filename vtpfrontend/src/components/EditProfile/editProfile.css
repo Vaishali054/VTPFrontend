@@ -1,0 +1,112 @@
+form{
+    display: block;
+    margin: 20px 20px;
+    
+}
+#email_id,#password, #name{
+    width: 95% ;
+    margin: 5px 0px;
+    border-radius: 9.886px;
+    border: 1.648px solid #C8C8C8;
+    background: rgba(255, 255, 255, 0.00);
+    height: 30.963px;
+    flex-shrink: 0;
+    color: #B8B8B8;
+    font-family: 'Roboto';
+    font-size: 14.829px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.222px;
+    padding: 10px  ;
+}
+
+label{
+    margin: 0px 20px;
+    background-color: white;
+    position: relative;
+    top: 15px;
+    
+}
+
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-button {
+    margin: 40px 140px;
+    border-radius: 6.591px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.edit-profile-button {
+    background-color: #4CAF50; /* Green background */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color : white;
+    font-size: 30px;
+}
+
+.edit-profile-button .close-modal {
+    font-size: 30px;
+    color: black; /* Text color is white */
+}
+
+.edit-profile-button .close-modal:hover {
+    color: #f0f0f0; /* Lighter white on hover */
+;
+}
+
+.button{
+  cursor: pointer;
+}
+
+.password_container{
+    display: flex;
+}
+.password-toggle{
+    position: relative;
+    right: 35px;
+    top: 27px;
+}
+
+@media (max-width: 690px) {
+    .form-heading{
+        font-size: 20px;
+        padding: 10px 0px;
+    }
+    #email_id,#password, #name{
+        height: 30px;
+        margin: 3px 0px;
+    }
+    .password-toggle{
+        top: 15px;
+        size: 2px;
+    }
+    .login-button{
+        padding: 5px 5px;
+        font-size: 15px;
+        margin: 5px 50px ;
+        height: 30px;
+    }
+    
+  }
