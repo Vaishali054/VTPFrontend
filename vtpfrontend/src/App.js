@@ -1,4 +1,4 @@
-import StockList from "./views/StockList";
+import StockList from "./views/TradePage/StockList";
 import { Route, Routes } from 'react-router-dom'
 import Profile from "./views/Profile/Profile";
 
