@@ -7,6 +7,7 @@ export const useStocksList = () => {
     queryFn: () => getStocksList(),
     staleTime: 1000 * 60,
     retry: 1,
+    refetchInterval: 1000 * 60,
   })
   return query
 }
