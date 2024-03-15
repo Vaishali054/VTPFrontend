@@ -1,32 +1,4 @@
-.delete-button {
-    background: #cc0000;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 20px;
-    border-radius: 12px;
-    max-width: 256px;
-    height: 40px;
-    flex-shrink: 0;
-    text-align: center;
-    color: #FFF;
-    font-family: 'Roboto';
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 1.32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 10px;
-    min-width: 110px;
-  }
-  
-  .delete-button:hover {
-    background-color: #a80000; /* Slightly darker red color on hover */
-  }
-
-  .profile_page{
+ .profile_page{
     width: 700px;
     height: 321px;
     flex-shrink: 0;

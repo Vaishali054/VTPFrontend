@@ -3,6 +3,8 @@ import TopNavBar from '../../components/TopNavBar';
 import EditProfile from '../../components/EditProfile/EditProfile'; // Adjust the path if necessary
 import './profile.css';
 import profile from "../../images/profile.jpeg"
+import Button from '@material-ui/core/Button';
+import { useTheme } from '@material-ui/core/styles';
 
 export default function Profile() {
   const [name, setName] = useState('');
@@ -13,6 +15,8 @@ export default function Profile() {
   useEffect(() => {
     fetchUserData();
   }, []);
+
+  const theme = useTheme();
 
   const fetchUserData = async () => {
     try {
@@ -93,8 +97,8 @@ export default function Profile() {
         </div>
           <div className="buttons">
             
-            <EditProfile name={name} email_id={email_id} className="hero-button"/>
-            <div className="delete-button " onClick={deleteAccount}>Delete</div>
+            <EditProfile name={name} email_id={email_id} />
+            <Button style={{ backgroundColor: theme.palette.delete.main , color: '#ffffff'}} variant='contained' onClick={deleteAccount}>Delete</Button>
         </div>
       </div>
       </div>

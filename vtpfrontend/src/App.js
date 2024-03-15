@@ -1,16 +1,63 @@
+import React from 'react';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Route, Routes } from 'react-router-dom';
 import StockList from "./views/TradePage/StockList";
-import { Route, Routes } from 'react-router-dom'
 import Profile from "./views/Profile/Profile";
+
+// Define your theme
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#2196f3',
+    },
+    secondary: {
+      main: '#4CAF50', 
+    },
+    delete: {
+      main: '#cc0000', 
+    },
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 8,
+      },
+      containedPrimary: {
+        color: '#ffffff', 
+        backgroundColor: '#2196f3',
+        '&:hover': {
+          backgroundColor: '#1976d2',
+        },
+      },
+      containedSecondary: {
+        color: '#ffffff',
+        backgroundColor: '#4CAF50',
+        '&:hover': {
+          backgroundColor: '#45a049',
+        },
+      },
+      containeddelete: {
+        color: '#ffffff',
+        backgroundColor: '#cc0000',
+        '&:hover': {
+          backgroundColor: '#d32f2f',
+        },
+      },
+    },
+  },
+});
+
 
 function App() {
   return (
-    <div className="App">
-     <Routes>
-     <Route path='/StocksList' element={<StockList />} />
-     <Route path='/profile' element={<Profile />} />
-     </Routes>
-
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Routes>
+          <Route path='/stocklist' element={<StockList />} />
+          <Route path='/profile' element={<Profile />} />
+        </Routes>
+      </div>
+    </ThemeProvider>
   );
 }
 

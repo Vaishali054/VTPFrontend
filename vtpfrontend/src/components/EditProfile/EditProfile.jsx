@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "../EditProfile/editProfile.css";
+import Button from '@material-ui/core/Button';
 
 const CustomModal = styled(Modal)`
   display: flex;
@@ -19,7 +20,7 @@ const CustomModal = styled(Modal)`
 
 const ModalContent = styled.div`
   width: 500px;
-  height: 500px;
+  height: 420px;
   flex-shrink: 0;
   border-radius: 16.477px;
   background: #fff;
@@ -74,7 +75,7 @@ export default function EditProfile(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //Take this auth Toekn from localStorage, with be set on login,
+    //Take this auth Toekn from Cookies, with be set on login,
     const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxNjY0MzEsImV4cCI6MTcxMDE3MDAzMX0.bLIhp3yb_fJhmAWjBwuDkqDgYhArzmztmuoQhaQ-3f4";
     const bodyData={};
 
@@ -126,9 +127,9 @@ export default function EditProfile(props) {
 
   return (
     <>
-      <div onClick={openProfileModal} className="hero-button">
+      <Button onClick={openProfileModal} className="hero-button" variant="contained" color="primary">
         Edit Profile
-      </div>
+      </Button>
 
       <CustomModal
         isOpen={show}
@@ -176,10 +177,13 @@ export default function EditProfile(props) {
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
             </div>
-            <div className="center">
-              <button className="submit-button" type="submit">
+            <div className="buttons">
+              <Button variant="contained" color="primary" type="submit">
                 Save Changes
-              </button>
+              </Button>
+              <Button variant="contained" color="secondary" type="submit" onClick={closeProfileModal}>
+                Close
+              </Button>
             </div>
           </form>
         </ModalContent>
