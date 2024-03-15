@@ -1,13 +1,14 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import TopNavBar from '../../components/TopNavBar';
+import TopNavBar from '../../components/TopNavbar/TopNavBar';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import "./stockList.css"
 import {useStocksList} from '../../hooks/useStocksList';
+import { Button } from '@material-ui/core';
 
 export default function StockList() {
  const [searchValue, setSearchValue] = React.useState('');
@@ -24,11 +25,43 @@ export default function StockList() {
     error,
  } = useStocksList(); 
 
+ const handlebuy=()=>{
+
+ }
+ const handlesell=()=>{
+
+ }
+
  const columns = [
-    { field: 'stock', headerName: 'Stock', sortable: true, width: 120 },
+    { field: 'stock', headerName: 'Stock', sortable: true, width: 160 },
     { field: 'dayhigh', headerName: 'Day High', sortable: true, width: 120 },
     { field: 'daylow', headerName: 'Day Low', sortable: true, width: 120 },
     { field: 'lastclose', headerName: 'Last Close', sortable: true, width: 120 },
+    {
+      field: 'actions',
+      headerName: 'Actions',
+      width: 150,
+      sortable: false,
+      disableClickEventBubbling: true,
+      renderCell: (params) => {
+        return (
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <Button
+              onClick={handlebuy}
+              style={{ backgroundColor: 'green', color: 'white', padding: '5px 10px', margin:'0px 5px' }}
+            >
+              Buy
+            </Button>
+            <Button
+              onClick={handlesell}
+              style={{ backgroundColor: 'red', color: 'white', padding: '5px 10px' }}
+            >
+              Sell
+            </Button>
+          </div>
+        );
+      },
+    },
  ];
 
  let rows = [];

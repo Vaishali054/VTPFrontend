@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "../EditProfile/editProfile.css";
 import Button from '@material-ui/core/Button';
+import { editProfile } from "../../api/editProfile";
 
 const CustomModal = styled(Modal)`
   display: flex;
@@ -75,8 +76,6 @@ export default function EditProfile(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //Take this auth Toekn from Cookies, with be set on login,
-    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxNjY0MzEsImV4cCI6MTcxMDE3MDAzMX0.bLIhp3yb_fJhmAWjBwuDkqDgYhArzmztmuoQhaQ-3f4";
     const bodyData={};
 
     for (const key in formData) {
@@ -96,23 +95,9 @@ export default function EditProfile(props) {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost:3080/auth/profile-update",
-        {
-          method: "POST",
-          headers: {
-            Authorization: authToken,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(bodyData),
-        }
-      );
+      const data = await editProfile(bodyData);
 
-      console.log(response);
-
-      const data = await response.json();
-
-      if (response.ok) {
+      if (data) {
         alert(data.message);
         window.location.reload();
       } else {
