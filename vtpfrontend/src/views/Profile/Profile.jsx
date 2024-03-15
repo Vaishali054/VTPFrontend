@@ -5,14 +5,12 @@ import './profile.css';
 import profile from "../../images/profile.jpeg"
 import Button from '@material-ui/core/Button';
 import { useTheme } from '@material-ui/core/styles';
+import { fetchProfile } from '../../api/fetchProfile';
+import { deleteProfile } from '../../api/deleteProfile';
 
 export default function Profile() {
   const [name, setName] = useState('');
   const [email_id, setEmail_id] = useState('');
-
-  //Will be taken from cookies
-  const authToken =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxNjY0MzEsImV4cCI6MTcxMDE3MDAzMX0.bLIhp3yb_fJhmAWjBwuDkqDgYhArzmztmuoQhaQ-3f4';
 
   useEffect(() => {
     fetchUserData();
@@ -22,16 +20,8 @@ export default function Profile() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('http://localhost:3080/auth/profile', {
-        method: 'GET',
-        headers: {
-          Authorization: authToken,
-          'Content-Type': 'application/json',
-        },
-      });
-      if (response.ok) {
-        console.log(response);
-        const data = await response.json();
+      const data = await fetchProfile();
+      if (data) {
         setName(data.user.name);
         setEmail_id(data.user.email_id);
       } else {
@@ -46,19 +36,9 @@ export default function Profile() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3080/auth/delete', {
-        method: 'PUT',
-        headers: {
-          Authorization: authToken,
-          'Content-Type': 'application/json',
-        },
-      });
+      const data = await deleteProfile();
 
-      console.log(response);
-
-      const data = await response.json();
-
-      if (response.ok) {
+      if (data) {
         alert(data.message);
         window.location.reload();
       } else {
