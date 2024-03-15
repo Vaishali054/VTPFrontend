@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TopNavBar from '../../components/TopNavBar';
+import TopNavBar from '../../components/TopNavbar/TopNavBar';
 import EditProfile from '../../components/EditProfile/EditProfile';
 import './profile.css';
 import profile from "../../images/profile.jpeg"
