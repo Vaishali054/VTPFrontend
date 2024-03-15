@@ -75,7 +75,7 @@ export default function EditProfile(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     //Take this auth Toekn from localStorage, with be set on login,
-    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxMDM3OTgsImV4cCI6MTcxMDEwNzM5OH0.J2y3mRBbFykUPFwnZlWf7iLBNmkr3ECgXBIECacWQHM";
+    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxNjY0MzEsImV4cCI6MTcxMDE3MDAzMX0.bLIhp3yb_fJhmAWjBwuDkqDgYhArzmztmuoQhaQ-3f4";
     const bodyData={};
 
     for (const key in formData) {

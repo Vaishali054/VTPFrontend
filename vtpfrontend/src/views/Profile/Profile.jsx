@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import TopNavBar from '../../components/TopNavBar';
 import EditProfile from '../../components/EditProfile/EditProfile'; // Adjust the path if necessary
 import './profile.css';
+import profile from "../../images/profile.jpeg"
 
 export default function Profile() {
   const [name, setName] = useState('');
   const [email_id, setEmail_id] = useState('');
   const authToken =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxMDM3OTgsImV4cCI6MTcxMDEwNzM5OH0.J2y3mRBbFykUPFwnZlWf7iLBNmkr3ECgXBIECacWQHM';
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxNjY0MzEsImV4cCI6MTcxMDE3MDAzMX0.bLIhp3yb_fJhmAWjBwuDkqDgYhArzmztmuoQhaQ-3f4';
 
   useEffect(() => {
     fetchUserData();
@@ -76,7 +77,9 @@ export default function Profile() {
         <div className="container-profile">
           <div className="profile-details">
             <div className='img-cnt'>
-            <div className="profile-img"></div>
+            <div className="profile-img">
+              <img src={profile} alt="demo-profile"/>
+            </div>
                </div>
                 <div className="profile-cont">
                   <div className="name">
