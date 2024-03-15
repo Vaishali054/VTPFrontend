@@ -64,9 +64,6 @@ export default function Profile() {
     }
   };
 
-  const logout = () => {
-    //Implement logout logic
-  };
 
   return (
     <>
@@ -97,7 +94,6 @@ export default function Profile() {
           <div className="buttons">
             
             <EditProfile name={name} email_id={email_id} className="hero-button"/>
-            <div className="hero-button " onClick={logout}>LogOut</div>
             <div className="delete-button " onClick={deleteAccount}>Delete</div>
         </div>
       </div>
