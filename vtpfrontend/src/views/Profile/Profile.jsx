@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import TopNavBar from '../../components/TopNavBar';
-import EditProfile from '../../components/EditProfile/EditProfile'; // Adjust the path if necessary
+import EditProfile from '../../components/EditProfile/EditProfile';
 import './profile.css';
+import profile from "../../images/profile.jpeg"
+import Button from '@material-ui/core/Button';
+import { useTheme } from '@material-ui/core/styles';
 
 export default function Profile() {
   const [name, setName] = useState('');
   const [email_id, setEmail_id] = useState('');
+
+  //Will be taken from cookies
   const authToken =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxMDM3OTgsImV4cCI6MTcxMDEwNzM5OH0.J2y3mRBbFykUPFwnZlWf7iLBNmkr3ECgXBIECacWQHM';
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxNjY0MzEsImV4cCI6MTcxMDE3MDAzMX0.bLIhp3yb_fJhmAWjBwuDkqDgYhArzmztmuoQhaQ-3f4';
 
   useEffect(() => {
     fetchUserData();
   }, []);
+
+  const theme = useTheme();
 
   const fetchUserData = async () => {
     try {
@@ -37,7 +44,6 @@ export default function Profile() {
 
   const deleteAccount = async (event) => {
     event.preventDefault();
-    //Take this auth Toekn from localStorage, with be set on login,
 
     try {
       const response = await fetch('http://localhost:3080/auth/delete', {
@@ -63,9 +69,6 @@ export default function Profile() {
     }
   };
 
-  const logout = () => {
-    //Implement logout logic
-  };
 
   return (
     <>
@@ -76,7 +79,9 @@ export default function Profile() {
         <div className="container-profile">
           <div className="profile-details">
             <div className='img-cnt'>
-            <div className="profile-img"></div>
+            <div className="profile-img">
+              <img src={profile} alt="demo-profile"/>
+            </div>
                </div>
                 <div className="profile-cont">
                   <div className="name">
@@ -91,12 +96,14 @@ export default function Profile() {
               
           </div>
         </div>
+
           <div className="buttons">
-            
-            <EditProfile name={name} email_id={email_id} className="hero-button"/>
-            <div className="hero-button " onClick={logout}>LogOut</div>
-            <div className="delete-button " onClick={deleteAccount}>Delete</div>
-        </div>
+            <EditProfile name={name} email_id={email_id} />
+            <Button style={{ backgroundColor: theme.palette.delete.main , color: '#ffffff'}} 
+               variant='contained' onClick={deleteAccount}>
+            Delete</Button>
+          </div>
+          
       </div>
       </div>
     </>

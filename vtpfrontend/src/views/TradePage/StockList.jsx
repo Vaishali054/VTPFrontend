@@ -25,10 +25,10 @@ export default function StockList() {
  } = useStocksList(); 
 
  const columns = [
-    { field: 'stock', headerName: 'Stock', sortable: false, width: 120 },
-    { field: 'dayhigh', headerName: 'Day High', sortable: false, width: 120 },
-    { field: 'daylow', headerName: 'Day Low', sortable: false, width: 120 },
-    { field: 'lastclose', headerName: 'Last Close', sortable: false, width: 120 },
+    { field: 'stock', headerName: 'Stock', sortable: true, width: 120 },
+    { field: 'dayhigh', headerName: 'Day High', sortable: true, width: 120 },
+    { field: 'daylow', headerName: 'Day Low', sortable: true, width: 120 },
+    { field: 'lastclose', headerName: 'Last Close', sortable: true, width: 120 },
  ];
 
  let rows = [];
