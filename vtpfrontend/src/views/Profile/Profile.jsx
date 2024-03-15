@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TopNavBar from '../../components/TopNavBar';
-import EditProfile from '../../components/EditProfile/EditProfile'; // Adjust the path if necessary
+import EditProfile from '../../components/EditProfile/EditProfile';
 import './profile.css';
 import profile from "../../images/profile.jpeg"
 import Button from '@material-ui/core/Button';
@@ -9,6 +9,8 @@ import { useTheme } from '@material-ui/core/styles';
 export default function Profile() {
   const [name, setName] = useState('');
   const [email_id, setEmail_id] = useState('');
+
+  //Will be taken from cookies
   const authToken =
     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxNjY0MzEsImV4cCI6MTcxMDE3MDAzMX0.bLIhp3yb_fJhmAWjBwuDkqDgYhArzmztmuoQhaQ-3f4';
 
@@ -42,7 +44,6 @@ export default function Profile() {
 
   const deleteAccount = async (event) => {
     event.preventDefault();
-    //Take this auth Toekn from localStorage, with be set on login,
 
     try {
       const response = await fetch('http://localhost:3080/auth/delete', {
@@ -95,11 +96,14 @@ export default function Profile() {
               
           </div>
         </div>
+
           <div className="buttons">
-            
             <EditProfile name={name} email_id={email_id} />
-            <Button style={{ backgroundColor: theme.palette.delete.main , color: '#ffffff'}} variant='contained' onClick={deleteAccount}>Delete</Button>
-        </div>
+            <Button style={{ backgroundColor: theme.palette.delete.main , color: '#ffffff'}} 
+               variant='contained' onClick={deleteAccount}>
+            Delete</Button>
+          </div>
+          
       </div>
       </div>
     </>

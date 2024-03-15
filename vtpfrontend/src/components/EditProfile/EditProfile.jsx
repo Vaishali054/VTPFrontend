@@ -89,8 +89,6 @@ export default function EditProfile(props) {
       }
     }
 
-    console.log(bodyData)
-
     // Check if bodyData is empty
     if (Object.keys(bodyData).length === 0) {
       alert("No field is changed");
