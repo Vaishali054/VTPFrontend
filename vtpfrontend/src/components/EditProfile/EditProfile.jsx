@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "../EditProfile/editProfile.css";
+import Button from '@material-ui/core/Button';
+import { editProfile } from "../../api/editProfile";
 
 const CustomModal = styled(Modal)`
   display: flex;
@@ -19,7 +21,7 @@ const CustomModal = styled(Modal)`
 
 const ModalContent = styled.div`
   width: 500px;
-  height: 500px;
+  height: 420px;
   flex-shrink: 0;
   border-radius: 16.477px;
   background: #fff;
@@ -74,8 +76,6 @@ export default function EditProfile(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //Take this auth Toekn from localStorage, with be set on login,
-    const authToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWVkZWFhNjhmZTYxNzE4ZmM0Yjk3OWMiLCJpYXQiOjE3MTAxMDM3OTgsImV4cCI6MTcxMDEwNzM5OH0.J2y3mRBbFykUPFwnZlWf7iLBNmkr3ECgXBIECacWQHM";
     const bodyData={};
 
     for (const key in formData) {
@@ -88,8 +88,6 @@ export default function EditProfile(props) {
       }
     }
 
-    console.log(bodyData)
-
     // Check if bodyData is empty
     if (Object.keys(bodyData).length === 0) {
       alert("No field is changed");
@@ -97,23 +95,9 @@ export default function EditProfile(props) {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost:3080/auth/profile-update",
-        {
-          method: "POST",
-          headers: {
-            Authorization: authToken,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(bodyData),
-        }
-      );
+      const data = await editProfile(bodyData);
 
-      console.log(response);
-
-      const data = await response.json();
-
-      if (response.ok) {
+      if (data) {
         alert(data.message);
         window.location.reload();
       } else {
@@ -126,9 +110,9 @@ export default function EditProfile(props) {
 
   return (
     <>
-      <div onClick={openProfileModal} className="hero-button">
+      <Button onClick={openProfileModal} className="hero-button" variant="contained" color="primary">
         Edit Profile
-      </div>
+      </Button>
 
       <CustomModal
         isOpen={show}
@@ -176,10 +160,13 @@ export default function EditProfile(props) {
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
             </div>
-            <div className="center">
-              <button className="submit-button" type="submit">
+            <div className="buttons">
+              <Button variant="contained" color="primary" type="submit">
                 Save Changes
-              </button>
+              </Button>
+              <Button variant="contained" color="secondary" type="submit" onClick={closeProfileModal}>
+                Close
+              </Button>
             </div>
           </form>
         </ModalContent>
