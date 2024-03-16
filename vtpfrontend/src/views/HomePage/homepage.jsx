@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom'; // Import Link for routing if necessary
 import './homepage.css'
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    // Logic for handling login
     console.log('Logging in with:', email, password);
   };
 

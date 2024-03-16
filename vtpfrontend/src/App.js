@@ -3,6 +3,8 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Route, Routes } from 'react-router-dom';
 import StockList from "./views/TradePage/StockList";
 import Profile from "./views/Profile/Profile";
+import Login from "./views/HomePage/homepage";
+import Register from "./views/Register/register";
 
 // Define your theme
 const theme = createMuiTheme({
@@ -50,14 +52,14 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <Routes>
-          <Route path='/stocklist' element={<StockList />} />
-          <Route path='/profile' element={<Profile />} />
-        </Routes>
-      </div>
-    </ThemeProvider>
+    <div className="App">
+     <Routes>
+     <Route path='/StocksList' element={<StockList />} />
+     <Route path='/profile' element={<Profile />} />
+     <Route path="/" element={<Login/>}/>
+     <Route path="/register" element={<Register/>}/>
+     </Routes>
+    </div>
   );
 }
 
