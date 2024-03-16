@@ -1,16 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for routing if necessary
-import './register.css'
+import { Link } from 'react-router-dom';
+import './register.css';
 
 export default function Register() {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email_id, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    // Logic for handling registration
-    console.log('Registering with:', name, email, password);
+    console.log('Registering with:', name, email_id, password);
+
+    try {
+      const response = await fetch('http://localhost:3080/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email_id, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Registration successful:', data);
+        window.location.href = '/'; 
+      } else {
+        console.error('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
   };
 
   return (
@@ -27,10 +46,10 @@ export default function Register() {
           />
         </div>
         <div>
-          <label>Email:</label>
+          <label>Email ID:</label>
           <input
             type="email"
-            value={email}
+            value={email_id}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -47,8 +66,9 @@ export default function Register() {
         <button type="submit">Register</button>
       </form>
       <div>
-        <p>Already have an account? <Link to="/
-        ">Login</Link></p>
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </div>
     </div>
   );
