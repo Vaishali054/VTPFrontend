@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { fetchProfile } from '../api/fetchProfile';
+import { fetchProfile } from '../../api/fetchProfile';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +42,7 @@ export default function TopNavBar() {
     try {
       const data = await fetchProfile();
       if (data) {
-        setuserId(data.id);
+        setuserId(data.user.id);
       } else {
         console.error('Failed to fetch user data');
       }
@@ -51,16 +51,23 @@ export default function TopNavBar() {
     }
   };
 
+  React.useEffect(() => {
+    // Fetch user data when the component mounts
+    fetchUserData();
+  }, []);
+
   const handleWatchlist = () => {
     setAnchorElMenu(null);
-    fetchUserData();
-    navigate(`/watchlist/${userId}`);
+    navigate(`/watchlist`);
   };
 
   const handlePortfolio = () => {
     setAnchorElMenu(null);
-    fetchUserData();
-    navigate(`/portfolio/${userId}`);
+    if (userId) {
+      navigate(`/portfolio/${userId}`);
+    } else {
+      console.error('User ID is not available');
+    }
   };
 
   return (
