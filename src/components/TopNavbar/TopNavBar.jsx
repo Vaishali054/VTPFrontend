@@ -44,7 +44,7 @@ export default function TopNavBar() {
     try {
       const data = await fetchProfile();
       if (data) {
-        setuserId(data.user.id);
+        setuserId(data.user_id);
         setUserBalance(data.user.current_Balance);
       } else {
         console.error('Failed to fetch user data');
