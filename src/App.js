@@ -64,7 +64,7 @@ function App() {
       <Route path="/register" element={<Register/>}/>
       <Route path="/watchlist/:userId" element={<Watchlist />} />
       <Route path="/portfolio/:userId" element={<Portfolio />} />
-      <Route path="/history/:userId" element={<TransactionsPage/>} />
+      <Route path="/history" element={<TransactionsPage/>} />
       </Routes>
       </div>
     </ThemeProvider>
