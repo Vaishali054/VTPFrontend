@@ -2,7 +2,7 @@ import axiosInstance from './axiosInstance';
 
 export const registerUser = async (name, email_id, password) => {
   try {
-    const response = await axiosInstance.post('http://localhost:3080/register', {
+    const response = await axiosInstance.post('/register', {
       name,
       email_id,
       password,

@@ -24,18 +24,19 @@ export default function Register() {
     try {
       const { success, message, error } = await registerUser(name, email_id, password);
       if (success) {
+        alert("Registered sucessfully!")
         window.location.href = '/';
       } else {
         window.location.href = '/';
         if (error && error.response && error.response.data && error.response.data.message === 'Email already in use') {
-          console.error('Email ID is already in use. Please use a different one.');
+          alert('Email ID is already in use. Please use a different one.');
         } else {
-          console.error(message || 'Registration failed. Please try again.');
+          alert(message || 'Registration failed. Please try again.');
         }
       }
     } catch (error) {
       console.error('Error registering user:', error);
-      console.error('Internal server error. Please try again later.');
+      alert('Internal server error. Please try again later.');
     }
   };
 
