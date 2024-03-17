@@ -1,55 +1,112 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for routing if necessary
-import './register.css'
+import { Link } from 'react-router-dom';
+import './register.css';
+import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import { registerUser } from '../../api/register';
 
 export default function Register() {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email_id, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    // Logic for handling registration
-    console.log('Registering with:', name, email, password);
+    console.log('Registering with:', name, email_id, password);
+
+    if (password !== confirmPassword) {
+      console.error('Password and confirm password do not match.');
+      return;
+    }
+
+    try {
+      const { success, message, error } = await registerUser(name, email_id, password);
+      if (success) {
+        window.location.href = '/';
+      } else {
+        window.location.href = '/';
+        if (error && error.response && error.response.data && error.response.data.message === 'Email already in use') {
+          console.error('Email ID is already in use. Please use a different one.');
+        } else {
+          console.error(message || 'Registration failed. Please try again.');
+        }
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+      console.error('Internal server error. Please try again later.');
+    }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
-    <div className="register-container">
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
+    <>
+      <TopNavBar />
+      <div className="register-container">
+        <h2>Register</h2>
+        <form onSubmit={handleRegister}>
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Email ID:</label>
+            <input
+              type="email"
+              value={email_id}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="password-input">
+            <label>Password:</label>
+            <div className="password-input-container">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button type="button" onClick={togglePasswordVisibility}>
+                {showPassword ? 'Hide' : 'Show'}
+              </button>
+            </div>
+          </div>
+          <div className="confirm-password">
+            <label>Confirm Password:</label>
+            <div className="password-input-container">
+              <input
+                type={showConfirmPassword ? 'text' : 'password'}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              <button type="button" onClick={toggleConfirmPasswordVisibility}>
+                {showConfirmPassword ? 'Hide' : 'Show'}
+              </button>
+            </div>
+          </div>
+          <button type="submit">Register</button>
+        </form>
         <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+          <p>
+            Already have an account? <Link to="/">Login</Link>
+          </p>
         </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      <div>
-        <p>Already have an account? <Link to="/
-        ">Login</Link></p>
       </div>
-    </div>
+    </>
   );
 }
