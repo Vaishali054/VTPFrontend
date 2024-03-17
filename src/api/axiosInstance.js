@@ -12,9 +12,11 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use((config) => {
-  const { jwtToken } = Cookies.get()
-  config.headers.Authorization = `Bearer ${jwtToken}`
-  return config
-})
+  const jwtToken = Cookies.get('token'); 
+  if (jwtToken) {
+    config.headers.Authorization = `Bearer ${jwtToken}`;
+  }
+  return config;
+});
 
 export default axiosInstance
