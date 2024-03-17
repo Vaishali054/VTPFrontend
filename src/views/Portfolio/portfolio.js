@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import './portfolio.css';
+import { togglePortfolio } from '../../api/togglePortfolio';
+import { fetchPortfolio } from '../../api/fetchPortfolio';
 
 const Portfolio = () => {
   const { userId } = useParams();
@@ -11,9 +13,9 @@ const Portfolio = () => {
   const [sortOrder, setSortOrder] = useState('desc');
   const [isPublic, setIsPublic] = useState(false);
 
-  const fetchPortfolio = async () => {
+  const fetchPort = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/portfolio/get?userId=${userId}`);
+      const response = await fetchPortfolio(userId);
       setPortfolio(response.data.portfolio);
       if(response.data.portfolio.status !== 'private'){
         setIsPublic(!isPublic);
@@ -25,7 +27,7 @@ const Portfolio = () => {
   };
 
   useEffect(() => {
-    fetchPortfolio();
+    fetchPort();
   }, [userId]);
 
   const COLORS = ['#0088FE', '#10C49F', '#FFBB28', '#FF8042', '#FF66B2', '#674838', '#678893', '#784450', '#365890'];
@@ -46,10 +48,7 @@ const Portfolio = () => {
 
   const handleToggleVisibility = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/portfolio/status', {
-        userId,
-        isPublic: !isPublic, 
-      });
+      const response = await togglePortfolio();
       setIsPublic(!isPublic); 
       console.log(response.data.message);
     } catch (error) {
