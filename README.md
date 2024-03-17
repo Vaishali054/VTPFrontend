@@ -3,7 +3,7 @@
 1. Clone this repository.
 
     ```bash
-    $ git clone git@github.com:JunihersGroup4/VTPFrontend.git
+    $ git clone https://github.com/JunihersGroup4/VTPFrontend.git
     ```
 
 2. Run the below commands.
