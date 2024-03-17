@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 
 export const handleLogin = async (email_id, password) => {
   try {
-    const response = await axiosInstance.post('http://localhost:3080/login', { email_id, password });
+    const response = await axiosInstance.post('/login', { email_id, password });
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
