@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import TopNavBar from '../../components/TopNavbar/TopNavBar';
-import fetchWatchlist from '../../api/fetchWatchlist';
-import addToWatchlist from '../../api/addToWatchlist';
-import deleteFromWatchlist from '../../api/deleteFromWatchlist';
+import {fetchWatchlist} from '../../api/fetchWatchlist';
+import {addToWatchlist} from '../../api/addToWatchlist';
+import {deleteFromWatchlist} from '../../api/deleteFromWatchlist';
 
 import {
   Table,
@@ -28,7 +27,11 @@ const Watchlist = () => {
   const fetchWatch = useCallback(async () => {
     try {
       const response = await fetchWatchlist();
-      setWatchlist(response.data.data);
+      //Only set watchlist if length>0
+      if(response.status){
+         setWatchlist(response.data);
+         console.log(response.data)
+      }
     } catch (error) {
       console.error(error);
     }
@@ -104,13 +107,13 @@ const Watchlist = () => {
                   <TableRow key={item._id}>
                     <TableCell>
                       <Typography variant="subtitle1" fontWeight="bold">
-                        {item.companyDetails.Name}{' '}
+                        {item.companyDetails.company_name}{' '}
                         <Typography component="span" variant="subtitle2" fontWeight="bold" color="textSecondary">
-                          ({item.companyDetails.Symbol})
+                          ({item.companyDetails.symbol})
                         </Typography>
                       </Typography>
                     </TableCell>
-                    <TableCell>${item.companyDetails.Current_Price}</TableCell>
+                    <TableCell>${item.companyDetails.current_Price}</TableCell>
                     <TableCell>
                       <Button variant="contained" color="primary" onClick={() => stockPurchase(item._id)}>
                         Buy/Sell
