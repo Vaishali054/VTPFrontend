@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTransactions } from '../../api/transaction';
+import TopNavBar from '../../components/TopNavbar/TopNavBar';
 
 const TransactionsPage = () => {
   const [transactions, setTransactions] = useState([]);
@@ -16,8 +17,10 @@ const TransactionsPage = () => {
       console.error('Error fetching transactions:', error);
     }
   };
-
+ 
   return (
+    <>
+    <TopNavBar/>
     <div>
       <h2>Transactions</h2>
       <table>
@@ -43,6 +46,7 @@ const TransactionsPage = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 

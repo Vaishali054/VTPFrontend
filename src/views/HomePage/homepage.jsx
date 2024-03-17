@@ -7,6 +7,7 @@ import { handleLogin } from '../../api/loginauth';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,11 +25,14 @@ export default function Login() {
       alert('Internal server error. Please try again later.');
     }
   };
-  
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <>
-       <TopNavBar />
+      <TopNavBar />
       <div className="login-container">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
@@ -44,11 +48,14 @@ export default function Login() {
           <div>
             <label>Password:</label>
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <button type="button" onClick={togglePasswordVisibility}>
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
           </div>
           <button type="submit">Login</button>
         </form>

@@ -1,89 +1,94 @@
 .register-container {
-  width: 400px;
-  margin: 0 auto;
-  padding: 40px;
-  border-radius: 20px;
-  border: 2px solid #efefef;
-  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: calc(100% - 40px);
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin: 20px auto 0;
 }
 
 .register-container h2 {
-  text-align: center;
   margin-bottom: 20px;
-  color: #35363a;
 }
 
 .register-container form {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 
-.register-container label {
-  margin-bottom: 10px;
-  color: #35363a;
+.register-container .name-label,
+.register-container .email-label {
+  margin-bottom: 5px;
+  color: #000000;
 }
 
-.register-container input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #eaeaea;
-  background: #fafafa;
-  margin-bottom: 20px;
-  width: 100%; /* Ensure input fields take up full width */
+.register-container .password-label,
+.register-container .confirm-password-label {
+  margin-bottom: 5px;
+  color: #000000;
+  font-weight: bold; /* Make the password labels bold */
 }
 
+.register-container input,
 .register-container button {
-  background: #d81f84;
-  color: #fff;
+  width: calc(100% - 10px);
   padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-.register-container button:hover {
-  background-color: #b7176d;
-}
-
-.register-container p {
-  text-align: center;
-  margin-top: 20px; /* Add margin to create space between register and login link */
-}
-
-.register-container a {
-  color: #d81f84;
-  text-align: center; /* Center the "Login" link */
-  display: block; /* Ensure the link takes up the full width of the container */
-}
-
-.password-input,
+.password-input-container,
 .confirm-password {
+  position: relative;
+}
+
+.password-input-container button,
+.confirm-password button {
+  position: absolute;
+  top: 50%;
+  right: -13px; 
+  transform: translateY(-60%);
+  height: 38px;
+  width: 40px;
+  padding: 0;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.password-input input,
-.confirm-password input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #eaeaea;
-  background: #fafafa;
-  margin-bottom: 20px;
-  width: calc(100% - 100px); /* Adjusted width to accommodate button */
-}
-
-.password-input button,
-.confirm-password button {
-  background: #d81f84;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-left: 10px; /* Adjusted margin to create space between input field and button */
-}
-
-.password-input button:hover,
+.password-input-container button:hover,
 .confirm-password button:hover {
-  background-color: #b7176d;
+  background-color: #1976d2;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+  background-color: #1976d2;
+}
+
+p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+p a {
+  color: #2196f3;
 }
