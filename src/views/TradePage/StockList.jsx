@@ -7,32 +7,32 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import "./stockList.css"
-import {useStocksList} from '../../hooks/useStocksList';
+import { useStocksList } from '../../hooks/useStocksList';
 import { Button } from '@material-ui/core';
 
 export default function StockList() {
- const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState('');
 
- const handleSearchChange = (event) => {
+  const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
- };
+  };
 
- const {
+  const {
     data,
     isLoading,
     isSuccess,
     isError,
     error,
- } = useStocksList(); 
+  } = useStocksList();
 
- const handlebuy=()=>{
+  const handlebuy = () => {
 
- }
- const handlesell=()=>{
+  }
+  const handlesell = () => {
 
- }
+  }
 
- const columns = [
+  const columns = [
     { field: 'stock', headerName: 'Stock', sortable: true, width: 160 },
     { field: 'dayhigh', headerName: 'Day High (INR)', sortable: true, width: 130 },
     { field: 'daylow', headerName: 'Day Low (INR)', sortable: true, width: 130 },
@@ -48,7 +48,7 @@ export default function StockList() {
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <Button
               onClick={handlebuy}
-              style={{ backgroundColor: 'green', color: 'white', padding: '5px 10px', margin:'0px 5px' }}
+              style={{ backgroundColor: 'green', color: 'white', padding: '5px 10px', margin: '0px 5px' }}
             >
               Buy
             </Button>
@@ -62,11 +62,11 @@ export default function StockList() {
         );
       },
     },
- ];
+  ];
 
- let rows = [];
+  let rows = [];
 
- if(isSuccess && data !== undefined){
+  if (isSuccess && data !== undefined) {
     rows = data.map((stockData, index) => ({
       id: index,
       stock: stockData.company_name,
@@ -74,18 +74,18 @@ export default function StockList() {
       daylow: stockData.min_stock_price,
       lastclose: stockData.current_Price,
     }));
- }
+  }
 
- const filteredRows = rows.filter(row =>
+  const filteredRows = rows.filter(row =>
     row.stock.toLowerCase().includes(searchValue.toLowerCase())
- );
+  );
 
- const getRowClassName = (params) => {
+  const getRowClassName = (params) => {
     const filteredIndex = filteredRows.findIndex(row => row.id === params.row.id);
     return filteredIndex % 2 === 0 ? 'even-row' : 'odd-row';
- };
+  };
 
- return (
+  return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       <TopNavBar />
       <Typography variant="h4" align="center" sx={{ marginTop: 2 }}>
@@ -104,16 +104,16 @@ export default function StockList() {
           </Grid>
           <Grid item xs={12} sm={10} md={7}>
             <Box sx={{ height: '100%', width: '100%', marginTop: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              {isLoading && <CircularProgress />} 
+              {isLoading && <CircularProgress />}
               {isError && <Typography variant="body1">Error: {error.message}</Typography>}
               {!isLoading && !isError && (
                 <DataGrid
-                 rows={filteredRows}
-                 columns={columns}
-                 autoHeight
-                 pageSize={15}
-                 getRowClassName={getRowClassName}
-                 disableSelectionOnClick
+                  rows={filteredRows}
+                  columns={columns}
+                  autoHeight
+                  pageSize={15}
+                  getRowClassName={getRowClassName}
+                  disableSelectionOnClick
                 />
               )}
             </Box>
@@ -121,5 +121,5 @@ export default function StockList() {
         </Grid>
       </div>
     </div>
- );
+  );
 }

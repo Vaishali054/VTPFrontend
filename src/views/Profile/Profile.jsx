@@ -11,6 +11,7 @@ import { deleteProfile } from '../../api/deleteProfile';
 export default function Profile() {
   const [name, setName] = useState('');
   const [email_id, setEmail_id] = useState('');
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     fetchUserData();
@@ -21,9 +22,11 @@ export default function Profile() {
   const fetchUserData = async () => {
     try {
       const data = await fetchProfile();
+      console.log(data);
       if (data) {
         setName(data.user.name);
         setEmail_id(data.user.email_id);
+        setBalance(data.user.current_Balance);
       } else {
         console.error('Failed to fetch user data');
       }
@@ -55,36 +58,36 @@ export default function Profile() {
       <TopNavBar />
       <div className='center'>
 
-      <div className="profile_page">
-        <div className="container-profile">
-          <div className="profile-details">
-            <div className='img-cnt'>
-            <div className="profile-img">
-              <img src={profile} alt="demo-profile"/>
-            </div>
-               </div>
-                <div className="profile-cont">
-                  <div className="name">
-                    <div className="title">Name</div>
-                    <div className="name-box">{name}</div>
-                  </div>
-                  <div className="name">
-                    <div className="title">Email</div>
-                    <div className="name-box">{email_id}</div>
-                  </div>
+        <div className="profile_page">
+          <div className="container-profile">
+            <div className="profile-details">
+              <div className='img-cnt'>
+                <div className="profile-img">
+                  <img src={profile} alt="demo-profile" />
                 </div>
-              
+              </div>
+              <div className="profile-cont">
+                <div className="name">
+                  <div className="title">Name</div>
+                  <div className="name-box">{name}</div>
+                </div>
+                <div className="name">
+                  <div className="title">Email</div>
+                  <div className="name-box">{email_id}</div>
+                </div>
+              </div>
+
+            </div>
           </div>
-        </div>
 
           <div className="buttons">
             <EditProfile name={name} email_id={email_id} />
-            <Button style={{ backgroundColor: theme.palette.delete.main , color: '#ffffff'}} 
-               variant='contained' onClick={deleteAccount}>
-            Delete</Button>
+            <Button style={{ backgroundColor: theme.palette.delete.main, color: '#ffffff' }}
+              variant='contained' onClick={deleteAccount}>
+              Delete</Button>
           </div>
-          
-      </div>
+
+        </div>
       </div>
     </>
   );

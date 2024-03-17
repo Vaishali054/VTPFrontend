@@ -6,6 +6,6 @@ export const fetchTransactions = async () => {
     return response.data.transactions;
   } catch (error) {
     console.error('Error fetching transactions:', error);
-    throw error; 
+    throw error;
   }
 };

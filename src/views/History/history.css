@@ -1,31 +1,34 @@
 /* Transaction page container */
 .transactions-container {
-    padding: 20px;
-  }
-  
-  /* Table styles */
-  .transactions-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .transactions-table th,
-  .transactions-table td {
-    padding: 8px 12px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .transactions-table th {
-    background-color: #2196f3; /* Primary color */
-    color: #ffffff; /* Text color */
-  }
-  
-  /* Table body styles */
-  .transactions-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row color */
-  }
-  
-  .transactions-table tbody tr:hover {
-    background-color: #e1f5fe; /* Hover row color */
-  }
-  
+  padding: 20px;
+}
+
+/* Table styles */
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table th,
+.transactions-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+.transactions-table th {
+  background-color: #2196f3;
+  /* Primary color */
+  color: #ffffff;
+  /* Text color */
+}
+
+/* Table body styles */
+.transactions-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+  /* Alternate row color */
+}
+
+.transactions-table tbody tr:hover {
+  background-color: #e1f5fe;
+  /* Hover row color */
+}

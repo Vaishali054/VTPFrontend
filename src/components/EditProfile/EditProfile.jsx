@@ -76,7 +76,7 @@ export default function EditProfile(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const bodyData={};
+    const bodyData = {};
 
     for (const key in formData) {
       // Skip the password field if it's empty

@@ -16,10 +16,10 @@ const theme = createMuiTheme({
       main: '#2196f3',
     },
     secondary: {
-      main: '#4CAF50', 
+      main: '#4CAF50',
     },
     delete: {
-      main: '#cc0000', 
+      main: '#cc0000',
     },
   },
   overrides: {
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
         borderRadius: 8,
       },
       containedPrimary: {
-        color: '#ffffff', 
+        color: '#ffffff',
         backgroundColor: '#2196f3',
         '&:hover': {
           backgroundColor: '#1976d2',
@@ -57,15 +57,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-      <Routes>
-      <Route path='/StocksList' element={<StockList />} />
-      <Route path='/profile' element={<Profile />} />
-      <Route path="/" element={<Login/>}/>
-      <Route path="/register" element={<Register/>}/>
-      <Route path="/watchlist" element={<Watchlist />} />
-      <Route path="/portfolio/:userId" element={<Portfolio />} />
-      <Route path="/history" element={<TransactionsPage/>} />
-      </Routes>
+        <Routes>
+          <Route path='/StocksList' element={<StockList />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/portfolio/:userId" element={<Portfolio />} />
+          <Route path="/history" element={<TransactionsPage />} />
+        </Routes>
       </div>
     </ThemeProvider>
   );

@@ -17,10 +17,10 @@ const Portfolio = () => {
     try {
       const response = await fetchPortfolio(userId);
       setPortfolio(response.data.portfolio);
-      if(response.data.portfolio.status !== 'private'){
+      if (response.data.portfolio.status !== 'private') {
         setIsPublic(!isPublic);
       }
-      
+
     } catch (error) {
       console.error('Error fetching portfolio:', error);
     }
@@ -49,7 +49,7 @@ const Portfolio = () => {
   const handleToggleVisibility = async () => {
     try {
       const response = await togglePortfolio();
-      setIsPublic(!isPublic); 
+      setIsPublic(!isPublic);
       console.log(response.data.message);
     } catch (error) {
       console.error('Error updating portfolio visibility:', error);
@@ -60,7 +60,7 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio-container">
-      
+
       <h2 className='start'>User Portfolio</h2>
 
       <div className="toggle-container">
@@ -68,7 +68,7 @@ const Portfolio = () => {
           onClick={handleToggleVisibility}
           className="toggle-button"
         >
-        {isPublic ? 'Make Private' : 'Make Public'}
+          {isPublic ? 'Make Private' : 'Make Public'}
         </button>
       </div>
       {portfolio.length > 0 ? (
@@ -81,7 +81,7 @@ const Portfolio = () => {
               cy={200}
               outerRadius={80}
               fill="#8884d8"
-              label = {({ CompanyDetails,value }) => `${CompanyDetails.Symbol} (${value})`}
+              label={({ CompanyDetails, value }) => `${CompanyDetails.Symbol} (${value})`}
             >
               {portfolio.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -89,9 +89,9 @@ const Portfolio = () => {
             </Pie>
             <Tooltip />
           </PieChart>
-            <div>
-              Total Portfolio Value: ${totalValue}
-            </div>
+          <div>
+            Total Portfolio Value: ${totalValue}
+          </div>
           <table className="styled-table">
             <thead>
               <tr>

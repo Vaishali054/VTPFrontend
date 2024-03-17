@@ -31,7 +31,8 @@
 .register-container .confirm-password-label {
   margin-bottom: 5px;
   color: #000000;
-  font-weight: bold; /* Make the password labels bold */
+  font-weight: bold;
+  /* Make the password labels bold */
 }
 
 .register-container input,
@@ -50,7 +51,7 @@
 .confirm-password button {
   position: absolute;
   top: 50%;
-  right: -13px; 
+  right: -13px;
   transform: translateY(-60%);
   height: 38px;
   width: 40px;

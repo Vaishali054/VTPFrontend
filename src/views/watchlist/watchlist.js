@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import TopNavBar from '../../components/TopNavbar/TopNavBar';
-import {fetchWatchlist} from '../../api/fetchWatchlist';
-import {addToWatchlist} from '../../api/addToWatchlist';
-import {deleteFromWatchlist} from '../../api/deleteFromWatchlist';
+import { fetchWatchlist } from '../../api/fetchWatchlist';
+import { addToWatchlist } from '../../api/addToWatchlist';
+import { deleteFromWatchlist } from '../../api/deleteFromWatchlist';
 
 import {
   Table,
@@ -28,9 +28,9 @@ const Watchlist = () => {
     try {
       const response = await fetchWatchlist();
       //Only set watchlist if length>0
-      if(response.status){
-         setWatchlist(response.data);
-         console.log(response.data)
+      if (response.status) {
+        setWatchlist(response.data);
+        console.log(response.data)
       }
     } catch (error) {
       console.error(error);
@@ -59,7 +59,7 @@ const Watchlist = () => {
   };
 
   const stockPurchase = async (itemId) => {
-    
+
   };
 
   const handleAddToWatchlist = async () => {
