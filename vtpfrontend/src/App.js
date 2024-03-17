@@ -5,8 +5,8 @@ import StockList from "./views/TradePage/StockList";
 import Profile from "./views/Profile/Profile";
 import Login from "./views/HomePage/homepage";
 import Register from "./views/Register/register";
-import Watchlist from './components/watchlist';
-import Portfolio from './components/portfolio';
+import Watchlist from './views/watchlist/watchlist';
+import Portfolio from "./views/Portfolio/portfolio"
 
 // Define your theme
 const theme = createMuiTheme({

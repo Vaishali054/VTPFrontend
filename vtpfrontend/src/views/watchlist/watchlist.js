@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import TopNavBar from './TopNavBar';
+import TopNavBar from '../../components/TopNavbar/TopNavBar';
 import {
   Table,
   TableBody,
