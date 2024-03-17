@@ -2,6 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import fetchWatchlist from '../../api/fetchWatchlist';
+import addToWatchlist from '../../api/addToWatchlist';
+import deleteFromWatchlist from '../../api/deleteFromWatchlist';
+
 import {
   Table,
   TableBody,
@@ -21,9 +25,9 @@ const Watchlist = () => {
   const [watchlist, setWatchlist] = useState([]);
   const [symbol, setSymbol] = useState('');
 
-  const fetchWatchlist = useCallback(async () => {
+  const fetchWatch = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/watchlist/get?userId=${userId}`);
+      const response = await fetchWatchlist();
       setWatchlist(response.data.data);
     } catch (error) {
       console.error(error);
@@ -31,10 +35,10 @@ const Watchlist = () => {
   }, [userId]);
 
   useEffect(() => {
-    fetchWatchlist();
-    const intervalId = setInterval(fetchWatchlist, 150000);
+    fetchWatch();
+    const intervalId = setInterval(fetchWatch, 150000);
     return () => clearInterval(intervalId);
-  }, [fetchWatchlist]);
+  }, [fetchWatch]);
 
   const removeFromWatchlist = async (itemId) => {
     try {
@@ -43,10 +47,9 @@ const Watchlist = () => {
       if (!confirmed) {
         return;
       }
-
-      await axios.delete(`http://localhost:8000/watchlist/remove?itemId=${itemId}`);
+      await deleteFromWatchlist(itemId);
       alert('Item removed from watchlist!');
-      fetchWatchlist();
+      fetchWatch();
     } catch (error) {
       console.error('Error removing item from watchlist:', error);
     }
@@ -58,13 +61,10 @@ const Watchlist = () => {
 
   const handleAddToWatchlist = async () => {
     try {
-      await axios.post(`http://localhost:8000/watchlist/add`, {
-        userId,
-        symbol,
-      });
+      await addToWatchlist(symbol);
       alert('Stock added to watchlist!');
       setSymbol('');
-      fetchWatchlist();
+      fetchWatch();
     } catch (error) {
       console.error('Error adding stock to watchlist:', error);
     }
