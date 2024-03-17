@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 
 export const togglePortfolio = async () => {
   try {
-    const res = await axiosInstance.get(`/portfolio/status`);
+    const res = await axiosInstance.post(`/portfolio/status`);
     return res.data;
   } catch (e) {
     if (e instanceof AxiosError) {
