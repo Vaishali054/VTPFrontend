@@ -52,14 +52,16 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <div className="App">
-     <Routes>
-     <Route path='/StocksList' element={<StockList />} />
-     <Route path='/profile' element={<Profile />} />
-     <Route path="/" element={<Login/>}/>
-     <Route path="/register" element={<Register/>}/>
-     </Routes>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+      <Routes>
+      <Route path='/StocksList' element={<StockList />} />
+      <Route path='/profile' element={<Profile />} />
+      <Route path="/" element={<Login/>}/>
+      <Route path="/register" element={<Register/>}/>
+      </Routes>
+      </div>
+    </ThemeProvider>
   );
 }
 
