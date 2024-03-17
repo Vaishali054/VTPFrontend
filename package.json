@@ -1,0 +1,8 @@
+{
+  "name": "VTPFrontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:JunihersGroup4/VTPFrontend.git",
+  "author": "Maithri <m.muralikrishna.cse21@itbhu.ac.in>",
+  "license": "MIT"
+}
