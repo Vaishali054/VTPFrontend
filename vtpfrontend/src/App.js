@@ -7,6 +7,7 @@ import Login from "./views/HomePage/homepage";
 import Register from "./views/Register/register";
 import Watchlist from './views/watchlist/watchlist';
 import Portfolio from "./views/Portfolio/portfolio"
+import TransactionsPage from './views/History/history';
 
 // Define your theme
 const theme = createMuiTheme({
@@ -63,6 +64,7 @@ function App() {
       <Route path="/register" element={<Register/>}/>
       <Route path="/watchlist/:userId" element={<Watchlist />} />
       <Route path="/portfolio/:userId" element={<Portfolio />} />
+      <Route path="/history/:userId" element={<TransactionsPage/>} />
       </Routes>
       </div>
     </ThemeProvider>

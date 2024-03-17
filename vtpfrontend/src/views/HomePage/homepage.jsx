@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import './homepage.css';
 import TopNavBar from '../../components/TopNavbar/TopNavBar';
-import { handleLogin } from '../../api/loginauth'; // Import the API function for login
+import { handleLogin } from '../../api/loginauth';
 
 export default function Login() {
-  const [email_id, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await handleLogin(email_id, password); // Call the API function for login
+      const response = await handleLogin(email, password);
       if (response.ok) {
-        // console.log('Login successful');
-        window.location.href = '/auth/profile';
+        document.cookie = `token=${response.token}; path=/`;
+        window.location.href = '/StocksList';
       } else {
         setError(response.message);
       }
@@ -24,6 +24,7 @@ export default function Login() {
       setError('Internal server error. Please try again later.');
     }
   };
+  
 
   return (
     <>
@@ -35,8 +36,8 @@ export default function Login() {
           <div>
             <label>Email:</label>
             <input
-              type="email_id"
-              value={email_id}
+              type="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
