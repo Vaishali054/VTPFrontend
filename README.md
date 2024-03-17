@@ -54,4 +54,4 @@
 ### Key Features:
 
 1. **Stock Trading:** Users can conveniently buy and sell stocks.
-2. **Real-time Market Data:** Market data is refreshed periodically for up-to-date information. (*Specify the refresh interval*)
+2. **Real-time Market Data:** Market data is refreshed periodically for up-to-date information. (2 mins)
