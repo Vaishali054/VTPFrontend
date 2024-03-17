@@ -23,7 +23,7 @@ const Watchlist = () => {
 
   const fetchWatchlist = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/watchlist/get?userId=${userId}`);
+      const response = await axios.get(`http://localhost:8000/watchlist/get?userId=${userId}`);
       setWatchlist(response.data.data);
     } catch (error) {
       console.error(error);
@@ -44,7 +44,7 @@ const Watchlist = () => {
         return;
       }
 
-      await axios.delete(`http://localhost:5000/api/watchlist/remove?itemId=${itemId}`);
+      await axios.delete(`http://localhost:8000/watchlist/remove?itemId=${itemId}`);
       alert('Item removed from watchlist!');
       fetchWatchlist();
     } catch (error) {
@@ -58,7 +58,7 @@ const Watchlist = () => {
 
   const handleAddToWatchlist = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/watchlist/add`, {
+      await axios.post(`http://localhost:8000/watchlist/add`, {
         userId,
         symbol,
       });
