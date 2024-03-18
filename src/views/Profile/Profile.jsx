@@ -37,20 +37,27 @@ export default function Profile() {
 
   const deleteAccount = async (event) => {
     event.preventDefault();
-
-    try {
-      const data = await deleteProfile();
-
-      if (data) {
-        alert(data.message);
-        window.location.reload();
-      } else {
-        alert('Error occured while deleting account');
+  
+    // Ask for confirmation
+    const confirmed = window.confirm("Are you sure you want to delete your account?");
+    
+    // If user confirms deletion
+    if (confirmed) {
+      try {
+        const data = await deleteProfile();
+  
+        if (data) {
+          alert(data.message);
+          window.location.reload();
+        } else {
+          alert('Error occurred while deleting account');
+        }
+      } catch (err) {
+        console.error('Error deleting account', err);
       }
-    } catch (err) {
-      console.error('Error deleting account', err);
     }
   };
+  
 
 
   return (
