@@ -6,15 +6,16 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp'; // Import ExitToAppIcon for logout
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
-import { handleLogout } from '../../api/logout'; 
 import { fetchProfile } from '../../api/fetchProfile'
+import { handleLogout } from '../../api/logout'; // Import the logout API call
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
+  const [anchorElAccount, setAnchorElAccount] = React.useState(null);
   const navigate = useNavigate();
   const [userId, setUserId] = React.useState('');
 
@@ -26,10 +27,31 @@ export default function TopNavBar() {
     setAnchorElMenu(null);
   };
 
+  const handleAccount = (event) => {
+    setAnchorElAccount(event.currentTarget);
+  };
+
+  const handleCloseAccount = () => {
+    setAnchorElAccount(null);
+  };
 
   const handleProfile = () => {
     setAnchorElAccount(null);
-    navigate("/profile");
+    if (userId) {
+      navigate(`/profile/${userId}`);
+    } else {
+      console.error('User ID is not available');
+    }
+  };
+
+  const handleLogoutClick = async () => {
+    try {
+      await handleLogout(); // Call the logout API
+      console.log('Logout successful');
+      navigate('/');
+   } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   const fetchUserData = async () => {
@@ -55,14 +77,8 @@ export default function TopNavBar() {
     if (userId) {
       navigate(`/watchlist/${userId}`);
     } else {
-      navigate('/');
       console.error('User ID is not available');
     }
-  };
-
-  const handleTradePage = () => {
-    setAnchorElMenu(null);
-    navigate(`/StocksList`);
   };
 
   const handlePortfolio = () => {
@@ -70,7 +86,6 @@ export default function TopNavBar() {
     if (userId) {
       navigate(`/portfolio/${userId}`);
     } else {
-      navigate('/');
       console.error('User ID is not available');
     }
   };
@@ -107,7 +122,6 @@ export default function TopNavBar() {
             >
               <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
               <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
-              <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
             </Typography>
@@ -117,7 +131,7 @@ export default function TopNavBar() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar-account"
                 aria-haspopup="true"
-                onClick={handleProfile}
+                onClick={handleAccount}
                 color="inherit"
               >
                 <AccountCircle />
@@ -138,7 +152,7 @@ export default function TopNavBar() {
                 onClose={handleCloseAccount}
               >
                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseAccount}>My account</MenuItem>
+                <MenuItem onClick={handleLogoutClick}>Logout</MenuItem> {/* Logout option */}
               </Menu>
             </div>
           </Toolbar>
