@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './homepage.css';
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import '../Register/register.css';
+import NavBar from '../../components/NavBar/NavBar';
 import { handleLogin } from '../../api/loginauth';
 
 export default function Login() {
@@ -32,7 +32,7 @@ export default function Login() {
 
   return (
     <>
-      <TopNavBar />
+      <NavBar />
       <div className="login-container">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>

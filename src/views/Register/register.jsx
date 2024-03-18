@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './register.css';
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import NavBar from '../../components/NavBar/NavBar';
 import { registerUser } from '../../api/register';
 
 export default function Register() {
@@ -50,7 +50,7 @@ export default function Register() {
 
   return (
     <>
-      <TopNavBar />
+      <NavBar />
       <div className="register-container">
         <h2>Register</h2>
         <form onSubmit={handleRegister}>
