@@ -54,7 +54,7 @@ export default function StockList() {
       field: 'change',
       headerName: 'Change',
       renderCell: (params) => {
-        const value = params.value;
+        const value = params.value.toFixed(2);;
         return (
           <span style={{ color: value >= 0 ? 'green' : 'red' }}>
             {value}
@@ -66,7 +66,7 @@ export default function StockList() {
       field: 'pChange',
       headerName: '%Change',
       renderCell: (params) => {
-        const value = parseFloat(params.value);
+        const value = parseFloat(params.value).toFixed(2);;
         return (
           <span style={{ color: value >= 0 ? 'green' : 'red' }}>
             {params.value}
