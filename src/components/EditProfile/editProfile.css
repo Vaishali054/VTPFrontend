@@ -83,10 +83,10 @@ label{
 .password_container{
     display: flex;
 }
-.password-toggle{
+.password-toggle-edit{
     position: relative;
     right: 35px;
-    top: 27px;
+    top: 24px;
 }
 
 @media (max-width: 690px) {

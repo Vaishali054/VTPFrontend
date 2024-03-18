@@ -156,7 +156,7 @@ export default function EditProfile(props) {
                 value={formData.password}
                 onChange={handleChange}
               />
-              <span className="password-toggle" onClick={togglePasswordVisibility}>
+              <span className="password-toggle-edit" onClick={togglePasswordVisibility}>
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
             </div>
