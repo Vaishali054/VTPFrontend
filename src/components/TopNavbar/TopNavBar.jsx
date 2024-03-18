@@ -15,7 +15,6 @@ import { fetchProfile } from '../../api/fetchProfile'
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
-  const [anchorElAccount, setAnchorElAccount] = React.useState(null);
   const navigate = useNavigate();
   const [userId, setUserId] = React.useState('');
 
@@ -27,32 +26,10 @@ export default function TopNavBar() {
     setAnchorElMenu(null);
   };
 
-  const handleAccount = (event) => {
-    setAnchorElAccount(event.currentTarget);
-  };
-
-  const handleCloseAccount = () => {
-    setAnchorElAccount(null);
-  };
 
   const handleProfile = () => {
     setAnchorElAccount(null);
-    if (userId) {
-      navigate(`/profile/${userId}`);
-    } else {
-      navigate('/')
-      console.error('User ID is not available');
-    }
-  };
-
-  const handleLogoutClick = async () => {
-    try {
-      await handleLogout(); 
-      console.log('Logout successful');
-      navigate('/');
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
+    navigate("/profile");
   };
 
   const fetchUserData = async () => {
@@ -81,6 +58,11 @@ export default function TopNavBar() {
       navigate('/');
       console.error('User ID is not available');
     }
+  };
+
+  const handleTradePage = () => {
+    setAnchorElMenu(null);
+    navigate(`/StocksList`);
   };
 
   const handlePortfolio = () => {
@@ -125,6 +107,7 @@ export default function TopNavBar() {
             >
               <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
               <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
+              <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
             </Typography>
@@ -134,7 +117,7 @@ export default function TopNavBar() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar-account"
                 aria-haspopup="true"
-                onClick={handleAccount}
+                onClick={handleProfile}
                 color="inherit"
               >
                 <AccountCircle />
@@ -155,7 +138,7 @@ export default function TopNavBar() {
                 onClose={handleCloseAccount}
               >
                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleLogoutClick}>Logout</MenuItem> {/* Logout option */}
+                <MenuItem onClick={handleCloseAccount}>My account</MenuItem>
               </Menu>
             </div>
           </Toolbar>

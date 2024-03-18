@@ -25,6 +25,8 @@ export default function StockList() {
     error,
   } = useStocksList();
 
+  console.log(data);
+
   const handlebuy = () => {
 
   }
@@ -33,10 +35,45 @@ export default function StockList() {
   }
 
   const columns = [
-    { field: 'stock', headerName: 'Stock', sortable: true, width: 160 },
+    { 
+      field: 'stock', 
+      headerName: 'Stock', 
+      sortable: true, 
+      width: 160,
+      renderCell: (params) => (
+        <div>
+          <div>{params.value}</div>
+          <div style={{ fontSize: '12px', color: 'gray' }}>({params.row.symbol})</div>
+        </div>
+      )
+    },
     { field: 'dayhigh', headerName: 'Day High (INR)', sortable: true, width: 130 },
     { field: 'daylow', headerName: 'Day Low (INR)', sortable: true, width: 130 },
     { field: 'lastclose', headerName: 'Last Close (INR)', sortable: true, width: 130 },
+    {
+      field: 'change',
+      headerName: 'Change',
+      renderCell: (params) => {
+        const value = params.value;
+        return (
+          <span style={{ color: value >= 0 ? 'green' : 'red' }}>
+            {value}
+          </span>
+        );
+      },
+   },
+   {
+      field: 'pChange',
+      headerName: '%Change',
+      renderCell: (params) => {
+        const value = parseFloat(params.value);
+        return (
+          <span style={{ color: value >= 0 ? 'green' : 'red' }}>
+            {params.value}
+          </span>
+        );
+      },
+   },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -66,13 +103,16 @@ export default function StockList() {
 
   let rows = [];
 
-  if (isSuccess && data !== undefined) {
+  if (isSuccess && data !== undefined && data.length>0 && data!== "Network Error") {
     rows = data.map((stockData, index) => ({
       id: index,
       stock: stockData.company_name,
       dayhigh: stockData.max_stock_price,
       daylow: stockData.min_stock_price,
       lastclose: stockData.current_Price,
+      change:stockData.change,
+      pChange:stockData.pChange,
+      symbol:stockData.symbol
     }));
   }
 
@@ -98,7 +138,7 @@ export default function StockList() {
       </Typography>
       <div className='center' style={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Grid container justifyContent="center">
-          <Grid item xs={12} sm={10} md={7}>
+          <Grid item xs={12} sm={10} md={7.5}>
             <TextField
               label="Search by Stock Name"
               variant="outlined"
@@ -107,11 +147,11 @@ export default function StockList() {
               onChange={handleSearchChange}
             />
           </Grid>
-          <Grid item xs={12} sm={10} md={7}>
+          <Grid item xs={12} sm={10} md={7.5}>
             <Box sx={{ height: '100%', width: '100%', marginTop: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               {isLoading && <CircularProgress />}
-              {isError && <Typography variant="body1">Error: {error.message}</Typography>}
-              {!isLoading && !isError && (
+              {(isError || data=== "Network Error") && <Typography variant="body1">Error fetching stocks! {error?.message}</Typography>}
+              {!isLoading && !isError && data!== "Network Error" && (
                 <DataGrid
                   rows={filteredRows}
                   columns={columns}
