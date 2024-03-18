@@ -76,9 +76,14 @@ export default function StockList() {
     }));
   }
 
-  const filteredRows = rows.filter(row =>
-    row.stock.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const filteredRows = rows.filter(row => {
+    if (row && row.stock) {
+        return row.stock.toLowerCase().includes(searchValue.toLowerCase());
+    } else {
+        return false;
+    }
+});
+
 
   const getRowClassName = (params) => {
     const filteredIndex = filteredRows.findIndex(row => row.id === params.row.id);

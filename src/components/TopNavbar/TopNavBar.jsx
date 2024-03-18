@@ -6,18 +6,18 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { fetchProfile } from '../../api/fetchProfile';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { handleLogout } from '../../api/logout'; 
+import { fetchProfile } from '../../api/fetchProfile'
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
   const [anchorElAccount, setAnchorElAccount] = React.useState(null);
   const navigate = useNavigate();
-  const [userId, setuserId] = React.useState('');
-  const [userBalance, setUserBalance] = React.useState(0);
+  const [userId, setUserId] = React.useState('');
 
   const handleMenu = (event) => {
     setAnchorElMenu(event.currentTarget);
@@ -37,15 +37,29 @@ export default function TopNavBar() {
 
   const handleProfile = () => {
     setAnchorElAccount(null);
-    navigate("/profile");
+    if (userId) {
+      navigate(`/profile/${userId}`);
+    } else {
+      navigate('/')
+      console.error('User ID is not available');
+    }
+  };
+
+  const handleLogoutClick = async () => {
+    try {
+      await handleLogout(); 
+      console.log('Logout successful');
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   const fetchUserData = async () => {
     try {
       const data = await fetchProfile();
       if (data) {
-        setuserId(data.user_id);
-        setUserBalance(data.user.current_Balance);
+        setUserId(data.user.id);
       } else {
         console.error('Failed to fetch user data');
       }
@@ -61,7 +75,12 @@ export default function TopNavBar() {
 
   const handleWatchlist = () => {
     setAnchorElMenu(null);
-    navigate(`/watchlist`);
+    if (userId) {
+      navigate(`/watchlist/${userId}`);
+    } else {
+      navigate('/');
+      console.error('User ID is not available');
+    }
   };
 
   const handlePortfolio = () => {
@@ -69,6 +88,7 @@ export default function TopNavBar() {
     if (userId) {
       navigate(`/portfolio/${userId}`);
     } else {
+      navigate('/');
       console.error('User ID is not available');
     }
   };
@@ -108,11 +128,7 @@ export default function TopNavBar() {
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
             </Typography>
-            <IconButton color="inherit">
-              <AttachMoneyIcon />
-              <Typography>{userBalance}</Typography>
-            </IconButton>
-            <div style={{ marginLeft: '10px' }}>
+            <div>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -139,7 +155,7 @@ export default function TopNavBar() {
                 onClose={handleCloseAccount}
               >
                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseAccount}>My account</MenuItem>
+                <MenuItem onClick={handleLogoutClick}>Logout</MenuItem> {/* Logout option */}
               </Menu>
             </div>
           </Toolbar>

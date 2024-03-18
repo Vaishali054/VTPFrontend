@@ -59,12 +59,12 @@ function App() {
       <div className="App">
         <Routes>
           <Route path='/StocksList' element={<StockList />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path="/" element={<Login />} />
+          <Route path='/profile/:userId' element={<Profile />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/watchlist/:userId" element={<Watchlist />} />
           <Route path="/portfolio/:userId" element={<Portfolio />} />
-          <Route path="/history" element={<TransactionsPage />} />
+          <Route path="/history/:userId" element={<TransactionsPage />} />
         </Routes>
       </div>
     </ThemeProvider>
