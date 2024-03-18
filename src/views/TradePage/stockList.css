@@ -1,0 +1,20 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px
+}
+
+.even-row {
+  background-color: #F4F7F6;
+}
+
+.odd-row {
+  background-color: #E9F1F4;
+}
+
+.MuiDataGrid-columnHeaderTitleContainer {
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}

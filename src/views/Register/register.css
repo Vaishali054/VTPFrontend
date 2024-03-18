@@ -1,0 +1,95 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: calc(100% - 40px);
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin: 20px auto 0;
+}
+
+.register-container h2 {
+  margin-bottom: 20px;
+}
+
+.register-container form {
+  width: 100%;
+}
+
+.register-container .name-label,
+.register-container .email-label {
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.register-container .password-label,
+.register-container .confirm-password-label {
+  margin-bottom: 5px;
+  color: #000000;
+  font-weight: bold;
+  /* Make the password labels bold */
+}
+
+.register-container input,
+.register-container button {
+  width: calc(100% - 10px);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.password-input-container,
+.confirm-password {
+  position: relative;
+}
+
+.password-input-container button,
+.confirm-password button {
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  transform: translateY(-60%);
+  height: 38px;
+  width: 40px;
+  padding: 0;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-input-container button:hover,
+.confirm-password button:hover {
+  background-color: #1976d2;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+  background-color: #1976d2;
+}
+
+p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+p a {
+  color: #2196f3;
+}
