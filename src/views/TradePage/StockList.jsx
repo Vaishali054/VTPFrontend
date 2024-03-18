@@ -25,6 +25,8 @@ export default function StockList() {
     error,
   } = useStocksList();
 
+  console.log(data);
+
   const handlebuy = () => {
 
   }
@@ -33,7 +35,18 @@ export default function StockList() {
   }
 
   const columns = [
-    { field: 'stock', headerName: 'Stock', sortable: true, width: 160 },
+    { 
+      field: 'stock', 
+      headerName: 'Stock', 
+      sortable: true, 
+      width: 160,
+      renderCell: (params) => (
+        <div>
+          <div>{params.value}</div>
+          <div style={{ fontSize: '12px', color: 'gray' }}>({params.row.symbol})</div>
+        </div>
+      )
+    },
     { field: 'dayhigh', headerName: 'Day High (INR)', sortable: true, width: 130 },
     { field: 'daylow', headerName: 'Day Low (INR)', sortable: true, width: 130 },
     { field: 'lastclose', headerName: 'Last Close (INR)', sortable: true, width: 130 },
@@ -99,6 +112,7 @@ export default function StockList() {
       lastclose: stockData.current_Price,
       change:stockData.change,
       pChange:stockData.pChange,
+      symbol:stockData.symbol
     }));
   }
 
