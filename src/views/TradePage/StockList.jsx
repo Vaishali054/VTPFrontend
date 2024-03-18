@@ -63,7 +63,11 @@ export default function StockList() {
           </Grid>
 
           <Grid item xs={12} sm={10} md={7.5}>
-            {isLoading && <CircularProgress />}
+            {isLoading && 
+            <div className="center">
+              <CircularProgress  />
+            </div>}
+
             {(isError || data === "Network Error") && (
               <Typography variant="body1">
                 Error fetching stocks! {error?.message}
