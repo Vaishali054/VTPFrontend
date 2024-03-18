@@ -134,7 +134,7 @@ export default function TopNavBar() {
             >
               <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
               <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
-              <MenuItem onClick={handleTradePage}>TradePage</MenuItem>
+              <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
               <MenuItem onClick={handleHistory}>History</MenuItem> {/* History option */}
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
