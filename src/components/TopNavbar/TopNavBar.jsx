@@ -97,6 +97,11 @@ export default function TopNavBar() {
     }
   };
 
+  const handleTradePage = () => {
+    setAnchorElMenu(null);
+    navigate(`/StocksList`); 
+  };
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -129,6 +134,7 @@ export default function TopNavBar() {
             >
               <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
               <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
+              <MenuItem onClick={handleTradePage}>TradePage</MenuItem>
               <MenuItem onClick={handleHistory}>History</MenuItem> {/* History option */}
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
