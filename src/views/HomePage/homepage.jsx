@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './homepage.css';
-import NavBar from '../../components/NavBar/NavBar';
 import { handleLogin } from '../../api/loginauth';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import TopNavBar from '../../components/TopNavbar/TopNavBar';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -34,7 +34,7 @@ export default function Login() {
 
   return (
     <>
-      <NavBar />
+      <TopNavBar />
       <div className="login-container">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
