@@ -66,7 +66,7 @@ export default function StockList() {
 
   let rows = [];
 
-  if (isSuccess && data !== undefined) {
+  if (isSuccess && data !== undefined && data.length>0 && data!== "Network Error") {
     rows = data.map((stockData, index) => ({
       id: index,
       stock: stockData.company_name,
@@ -105,8 +105,8 @@ export default function StockList() {
           <Grid item xs={12} sm={10} md={7}>
             <Box sx={{ height: '100%', width: '100%', marginTop: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               {isLoading && <CircularProgress />}
-              {isError && <Typography variant="body1">Error: {error.message}</Typography>}
-              {!isLoading && !isError && (
+              {(isError || data=== "Network Error") && <Typography variant="body1">Error fetching stocks! {error?.message}</Typography>}
+              {!isLoading && !isError && data!== "Network Error" && (
                 <DataGrid
                   rows={filteredRows}
                   columns={columns}

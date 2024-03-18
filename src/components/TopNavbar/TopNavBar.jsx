@@ -14,7 +14,6 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
-  const [anchorElAccount, setAnchorElAccount] = React.useState(null);
   const navigate = useNavigate();
   const [userId, setuserId] = React.useState('');
   const [userBalance, setUserBalance] = React.useState(0);
@@ -29,7 +28,6 @@ export default function TopNavBar() {
 
 
   const handleProfile = () => {
-    setAnchorElAccount(null);
     navigate("/profile");
   };
 
