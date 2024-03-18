@@ -1,15 +1,14 @@
-import axiosInstance from './axiosInstance'
-import { AxiosError } from 'axios'
+import axiosInstance from "./axiosInstance";
+import { AxiosError } from "axios";
 
 export const getStocksList = async () => {
   try {
-    const res = await axiosInstance.get(`/stocks/stocksList`)
-    return res.data
+    const res = await axiosInstance.get(`/stocks/stocksList`);
+    return res.data;
   } catch (e) {
     if (e instanceof AxiosError) {
-      return e.response?.data || e.message
+      return e.response?.data || e.message;
     }
-    throw e
+    throw e;
   }
-}
-
+};

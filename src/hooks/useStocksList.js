@@ -1,13 +1,14 @@
-import { useQuery } from '@tanstack/react-query'
-import { getStocksList } from '../api/fetchStocksList'
+import { useQuery } from "@tanstack/react-query";
+import { getStocksList } from "../api/fetchStocksList";
+import { STALE_TIME, RETRY, REFETCH_INTERVAL } from "../constants/constants";
 
 export const useStocksList = () => {
   const query = useQuery({
-    queryKey: ['stocks'],
+    queryKey: ["stocks"],
     queryFn: () => getStocksList(),
-    staleTime: 1000 * 60,
-    retry: 1,
-    refetchInterval: 1000 * 120,
-  })
-  return query
-}
+    staleTime: STALE_TIME,
+    retry: RETRY,
+    refetchInterval: REFETCH_INTERVAL,
+  });
+  return query;
+};
