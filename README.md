@@ -54,4 +54,10 @@
 ### Key Features:
 
 1. **Stock Trading:** Users can conveniently buy and sell stocks.
-2. **Real-time Market Data:** Market data is refreshed periodically for up-to-date information. (2 mins)
+2. **Real-time Market Data:** Market data is refreshed periodically for up-to-date information. (Every 2 minutes)
+
+### Market Data Details:
+
+- **Change:** Represents the absolute difference between the current price of the stock and its previous close.
+- **%Change:** Indicates the percentage change in the price of the stock compared to its previous close.
+
