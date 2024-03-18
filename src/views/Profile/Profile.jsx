@@ -5,8 +5,7 @@ import './profile.css';
 import profile from "../../images/profile.jpeg"
 import Button from '@material-ui/core/Button';
 import { useTheme } from '@material-ui/core/styles';
-import { fetchProfile } from '../../api/fetchProfile';
-import { deleteProfile } from '../../api/deleteProfile';
+import { fetchProfile,deleteProfile } from '../../api/Profile'; 
 
 export default function Profile() {
   const [name, setName] = useState('');
