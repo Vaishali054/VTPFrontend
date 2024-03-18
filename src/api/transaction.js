@@ -1,4 +1,4 @@
-import axiosInstance from '../api/axiosInstance';
+import axiosInstance from '../infra/axiosInstance';
 
 export const fetchTransactions = async () => {
   try {

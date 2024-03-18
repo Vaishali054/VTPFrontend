@@ -1,4 +1,4 @@
-import axiosInstance from "./axiosInstance";
+import axiosInstance from "../infra/axiosInstance";
 import { AxiosError } from "axios";
 
 export const getStocksList = async () => {

@@ -21,7 +21,6 @@ export default function Profile() {
   const fetchUserData = async () => {
     try {
       const data = await fetchProfile();
-      console.log(data);
       if (data) {
         setName(data.user.name);
         setEmail_id(data.user.email_id);
@@ -63,7 +62,6 @@ export default function Profile() {
     <>
       <TopNavBar />
       <div className='center'>
-
         <div className="profile_page">
           <div className="container-profile">
             <div className="profile-details">
@@ -82,7 +80,6 @@ export default function Profile() {
                   <div className="name-box">{email_id}</div>
                 </div>
               </div>
-
             </div>
           </div>
 
