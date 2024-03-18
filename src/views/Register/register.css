@@ -1,7 +1,6 @@
-.register-container,
-.login-container {
+.register-container {
   max-width: 400px;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -9,85 +8,94 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.register-container h2,
-.login-container h2 {
+.register-container h2 {
   text-align: center;
-  color: #2196f3;
 }
 
-.register-container form,
-.login-container form {
-  display: flex;
-  flex-direction: column;
+.register-container form {
+  margin-top: 20px;
 }
 
-.register-container form > div,
-.login-container form > div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+.register-container form div {
+  margin-bottom: 20px; 
 }
 
-.register-container label,
-.login-container label {
-  margin-right: 10px;
-  width: 100px;
-  color: #2196f3;
+.register-container form label {
+  display: block;
+  margin-bottom: 5px;
 }
+/* .register-container form .password-input-container {
+  margin-bottom: 30px; /* Increase the margin-bottom for the div containing password fields 
+} */
 
-.register-container input,
-.login-container input {
-  flex: 1;
+.register-container form input[type="password"]{
+  width: 100%;
+  height: fit-content;
   padding: 10px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.register-container .password-input,
-.login-container .password-input {
-  position: relative;
-}
-
-.register-container .password-input button,
-.login-container .password-input button {
-  background-color: #2196f3;
-  padding: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.register-container button[type="submit"],
-.login-container button[type="submit"] {
+.register-container form input[type="text"],
+.register-container form input[type="email"] {
+  width: 100%;
   padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.register-container form input[type="text"]:focus,
+.register-container form input[type="email"]:focus,
+.register-container form input[type="password"]:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.register-container form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #2196f3;
   border: none;
   border-radius: 5px;
-  background-color: #2196f3;
-  color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.register-container button[type="submit"]:hover,
-.login-container button[type="submit"]:hover {
+.register-container form button:hover {
   background-color: #1976d2;
 }
 
-.register-container p,
-.login-container p {
+.register-container p {
   text-align: center;
+  margin-top: 20px;
 }
 
-.register-container p a,
-.login-container p a {
+.register-container p a {
   color: #2196f3;
   text-decoration: none;
 }
 
-.register-container p a:hover,
-.login-container p a:hover {
+.register-container p a:hover {
   text-decoration: underline;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ccc;
+}
+
+.confirm-password {
+  margin-top: 20px; 
 }

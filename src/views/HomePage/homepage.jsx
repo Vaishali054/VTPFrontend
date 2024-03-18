@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Register/register.css';
+import './homepage.css';
 import NavBar from '../../components/NavBar/NavBar';
 import { handleLogin } from '../../api/loginauth';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -45,17 +47,19 @@ export default function Login() {
               required
             />
           </div>
-          <div>
+          <div className="password-input">
             <label>Password:</label>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <button type="button" onClick={togglePasswordVisibility}>
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
+            <div className="password-input-container">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span className="password-toggle" onClick={togglePasswordVisibility}>
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+              </span>
+            </div>
           </div>
           <button type="submit">Login</button>
         </form>

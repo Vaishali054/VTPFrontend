@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './register.css';
 import NavBar from '../../components/NavBar/NavBar';
 import { registerUser } from '../../api/register';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -24,7 +26,7 @@ export default function Register() {
     try {
       const { success, message, error } = await registerUser(name, email_id, password);
       if (success) {
-        alert("Registered sucessfully!")
+        alert("Registered successfully!")
         window.location.href = '/';
       } else {
         window.location.href = '/';
@@ -81,9 +83,9 @@ export default function Register() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button type="button" onClick={togglePasswordVisibility}>
-                {showPassword ? 'Hide' : 'Show'}
-              </button>
+              <span className="password-toggle" onClick={togglePasswordVisibility}>
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+              </span>
             </div>
           </div>
           <div className="confirm-password">
@@ -95,9 +97,9 @@ export default function Register() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
-              <button type="button" onClick={toggleConfirmPasswordVisibility}>
-                {showConfirmPassword ? 'Hide' : 'Show'}
-              </button>
+              <span className="password-toggle" onClick={toggleConfirmPasswordVisibility}>
+                <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} />
+              </span>
             </div>
           </div>
           <button type="submit">Register</button>
@@ -111,3 +113,4 @@ export default function Register() {
     </>
   );
 }
+

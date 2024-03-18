@@ -6,12 +6,13 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp'; // Import ExitToAppIcon for logout
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import HistoryIcon from '@mui/icons-material/History';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
 import { fetchProfile } from '../../api/fetchProfile'
-import { handleLogout } from '../../api/logout'; // Import the logout API call
+import { handleLogout } from '../../api/logout';
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
@@ -46,10 +47,10 @@ export default function TopNavBar() {
 
   const handleLogoutClick = async () => {
     try {
-      await handleLogout(); // Call the logout API
+      await handleLogout();
       console.log('Logout successful');
       navigate('/');
-   } catch (error) {
+    } catch (error) {
       console.error('Error logging out:', error);
     }
   };
@@ -68,7 +69,6 @@ export default function TopNavBar() {
   };
 
   React.useEffect(() => {
-    // Fetch user data when the component mounts
     fetchUserData();
   }, []);
 
@@ -85,6 +85,15 @@ export default function TopNavBar() {
     setAnchorElMenu(null);
     if (userId) {
       navigate(`/portfolio/${userId}`);
+    } else {
+      console.error('User ID is not available');
+    }
+  };
+
+  const handleHistory = () => {
+    setAnchorElMenu(null);
+    if (userId) {
+      navigate(`/history/${userId}`); 
     } else {
       console.error('User ID is not available');
     }
@@ -122,6 +131,7 @@ export default function TopNavBar() {
             >
               <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
               <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
+              <MenuItem onClick={handleHistory}>History</MenuItem> {/* History option */}
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
             </Typography>
