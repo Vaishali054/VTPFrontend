@@ -38,6 +38,30 @@ export default function StockList() {
     { field: 'daylow', headerName: 'Day Low (INR)', sortable: true, width: 130 },
     { field: 'lastclose', headerName: 'Last Close (INR)', sortable: true, width: 130 },
     {
+      field: 'change',
+      headerName: 'Change',
+      renderCell: (params) => {
+        const value = params.value;
+        return (
+          <span style={{ color: value >= 0 ? 'green' : 'red' }}>
+            {value}
+          </span>
+        );
+      },
+   },
+   {
+      field: 'pChange',
+      headerName: '%Change',
+      renderCell: (params) => {
+        const value = parseFloat(params.value);
+        return (
+          <span style={{ color: value >= 0 ? 'green' : 'red' }}>
+            {params.value}
+          </span>
+        );
+      },
+   },
+    {
       field: 'actions',
       headerName: 'Actions',
       width: 150,
@@ -73,6 +97,8 @@ export default function StockList() {
       dayhigh: stockData.max_stock_price,
       daylow: stockData.min_stock_price,
       lastclose: stockData.current_Price,
+      change:stockData.change,
+      pChange:stockData.pChange,
     }));
   }
 
@@ -93,7 +119,7 @@ export default function StockList() {
       </Typography>
       <div className='center' style={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Grid container justifyContent="center">
-          <Grid item xs={12} sm={10} md={7}>
+          <Grid item xs={12} sm={10} md={7.5}>
             <TextField
               label="Search by Stock Name"
               variant="outlined"
@@ -102,7 +128,7 @@ export default function StockList() {
               onChange={handleSearchChange}
             />
           </Grid>
-          <Grid item xs={12} sm={10} md={7}>
+          <Grid item xs={12} sm={10} md={7.5}>
             <Box sx={{ height: '100%', width: '100%', marginTop: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               {isLoading && <CircularProgress />}
               {(isError || data=== "Network Error") && <Typography variant="body1">Error fetching stocks! {error?.message}</Typography>}
