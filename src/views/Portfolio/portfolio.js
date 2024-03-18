@@ -4,7 +4,7 @@ import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import './portfolio.css';
 import { togglePortfolio } from '../../api/togglePortfolio';
 import { fetchPortfolio } from '../../api/fetchPortfolio';
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import TopNavBar from '../../components/topNavbar/topNavBar';
 
 const Portfolio = () => {
   const { userId } = useParams();

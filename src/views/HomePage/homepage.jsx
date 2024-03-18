@@ -4,7 +4,7 @@ import './homepage.css';
 import { handleLogin } from '../../api/loginauth';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import TopNavBar from '../../components/topNavbar/topNavBar';
 
 export default function Login() {
   const [email, setEmail] = useState('');

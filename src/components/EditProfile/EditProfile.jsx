@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "../EditProfile/editProfile.css";
+import "./editProfile.css";
 import Button from '@material-ui/core/Button';
-import { editProfile } from "../../api/Profile";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import { editProfile } from "../../api/profile";
+import EditProfileModal from "../editProfileModal/EditProfileModal";
 
 export default function EditProfile(props) {
   const [show, setShow] = useState(false);

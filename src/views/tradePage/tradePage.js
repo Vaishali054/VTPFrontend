@@ -1,13 +1,13 @@
 import * as React from "react";
-import TopNavBar from "../../components/TopNavbar/TopNavBar";
+import TopNavBar from "../../components/topNavbar/topNavBar";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import CircularProgress from "@mui/material/CircularProgress";
-import "./stockList.css";
+import "./tradePage.css";
 import { useStocksList } from "../../hooks/useStocksList";
-import { columns, formatRows } from "../../utilities/StocksUtils";
-import StocksTable from "../../components/StocksTable/StocksTable";
+import { columns, formatRows } from "../../utilities/stocksUtils";
+import StocksTable from "../../components/stocksTable/stocksTable";
 
 export default function StockList() {
   const [searchValue, setSearchValue] = React.useState("");

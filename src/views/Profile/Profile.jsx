@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
-import EditProfile from '../../components/EditProfile/EditProfile';
+import TopNavBar from '../../components/topNavbar/topNavBar';
+import EditProfile from '../../components/editProfile/EditProfile';
 import './profile.css';
 import profile from "../../images/profile.jpeg"
 import Button from '@material-ui/core/Button';
 import { useTheme } from '@material-ui/core/styles';
-import { fetchProfile,deleteProfile } from '../../api/Profile'; 
+import { fetchProfile,deleteProfile } from '../../api/profile'; 
 
 export default function Profile() {
   const [name, setName] = useState('');
