@@ -10,7 +10,6 @@
 
     ```bash
     $ yarn install
-    $ cd vtpfrontend
     $ yarn start
     ```
 
