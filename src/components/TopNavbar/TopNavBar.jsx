@@ -27,13 +27,6 @@ export default function TopNavBar() {
     setAnchorElMenu(null);
   };
 
-  const handleAccount = (event) => {
-    setAnchorElAccount(event.currentTarget);
-  };
-
-  const handleCloseAccount = () => {
-    setAnchorElAccount(null);
-  };
 
   const handleProfile = () => {
     setAnchorElAccount(null);
@@ -62,6 +55,11 @@ export default function TopNavBar() {
   const handleWatchlist = () => {
     setAnchorElMenu(null);
     navigate(`/watchlist`);
+  };
+
+  const handleTradePage = () => {
+    setAnchorElMenu(null);
+    navigate(`/StocksList`);
   };
 
   const handlePortfolio = () => {
@@ -105,6 +103,7 @@ export default function TopNavBar() {
             >
               <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
               <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
+              <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
             </Typography>
@@ -118,29 +117,11 @@ export default function TopNavBar() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar-account"
                 aria-haspopup="true"
-                onClick={handleAccount}
+                onClick={handleProfile}
                 color="inherit"
               >
                 <AccountCircle />
               </IconButton>
-              <Menu
-                id="menu-appbar-account"
-                anchorEl={anchorElAccount}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElAccount)}
-                onClose={handleCloseAccount}
-              >
-                <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseAccount}>My account</MenuItem>
-              </Menu>
             </div>
           </Toolbar>
         </AppBar>
