@@ -82,7 +82,7 @@ export default function TopNavBar() {
   const handleWatchlist = () => {
     setAnchorElMenu(null);
     if (userId) {
-      navigate(`/watchlist/${userId}`);
+      navigate(`/watchlist`);
     } else {
       console.error('User ID is not available');
     }

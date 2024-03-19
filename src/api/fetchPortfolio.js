@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 
 export const fetchPortfolio = async (userId) => {
   try {
-    const res = await axiosInstance.get(`/portfolio/get`, { userId });
+    const res = await axiosInstance.get(`/portfolio/get?userId=${userId}`);
     return res.data;
   } catch (e) {
     if (e instanceof AxiosError) {

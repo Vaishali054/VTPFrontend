@@ -62,33 +62,11 @@ const Watchlist = () => {
 
   };
 
-  const handleAddToWatchlist = async () => {
-    try {
-      await addToWatchlist(symbol);
-      alert('Stock added to watchlist!');
-      setSymbol('');
-      fetchWatch();
-    } catch (error) {
-      console.error('Error adding stock to watchlist:', error);
-    }
-  };
-
   return (
     <div>
       <TopNavBar />
-      <Box mt={8} display="flex" justifyContent="center">
+      <Box mt={2} display="flex" justifyContent="center">
         <Typography variant="h4">User's Watchlist</Typography>
-      </Box>
-      <Box mt={8} display="flex" justifyContent="flex-end" position="absolute" top={0} right={0} p={2}>
-        <TextField
-          label="Enter Symbol"
-          variant="outlined"
-          value={symbol}
-          onChange={(e) => setSymbol(e.target.value)}
-        />
-        <Button variant="contained" color="primary" onClick={handleAddToWatchlist} sx={{ ml: 2 }}>
-          Add to Watchlist
-        </Button>
       </Box>
       <Box mt={10} display="flex" justifyContent="center">
         {watchlist.length > 0 ? (

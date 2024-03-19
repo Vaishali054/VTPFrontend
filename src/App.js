@@ -62,7 +62,7 @@ function App() {
           <Route path='/StocksList/:userId' element={<StockList />} />
           <Route path='/profile/:userId' element={<Profile />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/watchlist/:userId" element={<Watchlist />} />
+          <Route path="/watchlist" element={<Watchlist />} />
           <Route path="/portfolio/:userId" element={<Portfolio />} />
           <Route path="/history/:userId" element={<TransactionsPage />} />
         </Routes>
