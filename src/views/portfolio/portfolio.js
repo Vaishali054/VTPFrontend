@@ -17,6 +17,7 @@ const Portfolio = () => {
     try {
       const response = await fetchPortfolio(userId);
       setPortfolio(response.portfolio);
+      console.log(portfolio);
       if (response.status !== 'private') {
         setIsPublic(!isPublic);
       }
@@ -60,8 +61,10 @@ const Portfolio = () => {
       console.error('Error updating portfolio visibility:', error);
     }
   };
-
-  const totalValue = portfolio.reduce((acc, stock) => acc + stock.TotalValue, 0);
+  const totalValue = 0;
+  if(portfolio.length > 0){
+    totalValue = portfolio.reduce((acc, stock) => acc + stock.TotalValue, 0);
+  }
 
   return (
     <>
@@ -78,7 +81,7 @@ const Portfolio = () => {
           {isPublic ? 'Make Private' : 'Make Public'}
         </button>
       </div>
-      {portfolio.length > 0 ? (
+      {portfolio && portfolio.length > 0 ? (
         <div className="centered">
           <PieChart width={400} height={400} className="centered">
             <Pie
@@ -127,7 +130,7 @@ const Portfolio = () => {
               No stocks in possession currently.
             </p>
           </div>
-        )
+        )}
     </div>
     </>
   );
