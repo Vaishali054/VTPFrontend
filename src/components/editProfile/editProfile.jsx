@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./editProfile.css";
 import Button from '@material-ui/core/Button';
-import { editProfile } from "../../api/Profile";
+import { editProfile } from "../../api/profile";
 import EditProfileModal from "../editProfileModal/editProfileModal";
 
 export default function EditProfile(props) {
