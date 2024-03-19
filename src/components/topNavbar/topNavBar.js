@@ -18,7 +18,7 @@ export default function TopNavBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [userId, setUserId] = React.useState('');
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false); // Track user's login status
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false); 
 
   const handleMenu = (event) => {
     setAnchorElMenu(event.currentTarget);
@@ -60,7 +60,7 @@ export default function TopNavBar() {
       const data = await fetchProfile();
       if (data) {
         setUserId(data.user.id);
-        setIsLoggedIn(true); // User is logged in
+        setIsLoggedIn(true); 
       } else {
         console.error('Failed to fetch user data');
       }
@@ -75,7 +75,7 @@ export default function TopNavBar() {
 
   React.useEffect(() => {
     if (location.pathname === '/' && isLoggedIn) {
-      handleLogoutClick();
+      navigate(`/StocksList/${userId}`)
     }
   }, [location, isLoggedIn]);
 

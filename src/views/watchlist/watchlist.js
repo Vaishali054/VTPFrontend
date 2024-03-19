@@ -29,7 +29,7 @@ const Watchlist = () => {
     } catch (error) {
       console.error(error);
     }
-  }, [userId]);
+  });
 
   useEffect(() => {
     fetchWatch();
