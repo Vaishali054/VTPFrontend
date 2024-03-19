@@ -1,3 +1,3 @@
-export const STALE_TIME = 1000 * 60;
-export const RETRY = 1;
-export const REFETCH_INTERVAL = 1000 * 120;
+export const STOCKS_LIST_STALE_TIME = 1000 * 60;
+export const STOCKS_LIST_RETRY_ATTEMPTS = 1;
+export const STOCKS_LIST_REFETCH_INTERVAL = 1000 * 120;
