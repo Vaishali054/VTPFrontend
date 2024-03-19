@@ -8,15 +8,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { useNavigate } from 'react-router-dom';
-import { fetchProfile } from '../../api/profile'
+import { useNavigate, useLocation } from 'react-router-dom';
+import { fetchProfile } from '../../api/profile';
 import { handleLogout } from '../../api/authAPI';
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
   const [anchorElAccount, setAnchorElAccount] = React.useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const [userId, setUserId] = React.useState('');
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false); // Track user's login status
 
   const handleMenu = (event) => {
     setAnchorElMenu(event.currentTarget);
@@ -58,6 +60,7 @@ export default function TopNavBar() {
       const data = await fetchProfile();
       if (data) {
         setUserId(data.user.id);
+        setIsLoggedIn(true); // User is logged in
       } else {
         console.error('Failed to fetch user data');
       }
@@ -69,6 +72,12 @@ export default function TopNavBar() {
   React.useEffect(() => {
     fetchUserData();
   }, []);
+
+  React.useEffect(() => {
+    if (location.pathname === '/' && isLoggedIn) {
+      handleLogoutClick();
+    }
+  }, [location, isLoggedIn]);
 
   const handleWatchlist = () => {
     setAnchorElMenu(null);
@@ -91,7 +100,7 @@ export default function TopNavBar() {
   const handleHistory = () => {
     setAnchorElMenu(null);
     if (userId) {
-      navigate(`/history/${userId}`); 
+      navigate(`/history/${userId}`);
     } else {
       console.error('User ID is not available');
     }
@@ -99,7 +108,7 @@ export default function TopNavBar() {
 
   const handleTradePage = () => {
     setAnchorElMenu(null);
-    navigate(`/StocksList`); 
+    navigate(`/StocksList/${userId}`);
   };
 
   return (
@@ -107,68 +116,75 @@ export default function TopNavBar() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="fixed">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleMenu}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElMenu}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElMenu)}
-              onClose={handleCloseMenu}
-            >
-              <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
-              <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
-              <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
-              <MenuItem onClick={handleHistory}>History</MenuItem> {/* History option */}
-            </Menu>
-            <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
-            </Typography>
-            <div>
+            {isLoggedIn && (
               <IconButton
                 size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar-account"
-                aria-haspopup="true"
-                onClick={handleAccount}
+                edge="start"
                 color="inherit"
+                aria-label="menu"
+                onClick={handleMenu}
+                sx={{ mr: 2 }}
               >
-                <AccountCircle />
+                <MenuIcon />
               </IconButton>
-              <Menu
-                id="menu-appbar-account"
-                anchorEl={anchorElAccount}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElAccount)}
-                onClose={handleCloseAccount}
-              >
-                <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleLogoutClick}>Logout</MenuItem> {/* Logout option */}
-              </Menu>
-            </div>
+            )}
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Titan Trade
+            </Typography>
+            {isLoggedIn && (
+              <>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElMenu}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElMenu)}
+                  onClose={handleCloseMenu}
+                >
+                  <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
+                  <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
+                  <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
+                  <MenuItem onClick={handleHistory}>History</MenuItem> 
+                </Menu>
+                <div>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar-account"
+                    aria-haspopup="true"
+                    onClick={handleAccount}
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar-account"
+                    anchorEl={anchorElAccount}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElAccount)}
+                    onClose={handleCloseAccount}
+                  >
+                    <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                    <MenuItem onClick={handleLogoutClick}>Logout</MenuItem> 
+                  </Menu>
+                </div>
+              </>
+            )}
           </Toolbar>
         </AppBar>
         <Toolbar />

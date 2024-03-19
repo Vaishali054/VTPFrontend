@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTransactions } from '../../api/transaction.js';
 import TopNavBar from '../../components/topNavbar/topNavBar.js';
+import './history.css';
 
 const TransactionsPage = () => {
   const [transactions, setTransactions] = useState([]);
@@ -21,30 +22,33 @@ const TransactionsPage = () => {
   return (
     <>
       <TopNavBar />
-      <div>
-        <h2>Transactions</h2>
-        <table>
+      <div className="transactions-container">
+        <h2 className="transactions-heading">Transactions</h2>
+        <table className="transactions-table">
           <thead>
             <tr>
-              <th>Transaction ID</th>
-              <th>Company Name</th> { }
+              <th>Sl No</th>
+              <th>Company Name</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Transaction Type</th>
             </tr>
           </thead>
           <tbody>
-            {transactions.map(transaction => (
+            {transactions && transactions.map((transaction, index) => (
               <tr key={transaction._id}>
-                <td>{transaction.Transaction_Id}</td>
-                <td>{transaction.company_name}</td> { }
+                <td>{index + 1}</td>
+                <td>{transaction.companyName}</td>
                 <td>{transaction.price}</td>
                 <td>{transaction.quantity}</td>
-                <td>{transaction.transaction_type}</td>
+                <td>{transaction.transactionType}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        {transactions && transactions.length === 0 && (
+          <p className="no-transactions-message">You have not performed any transactions yet!</p>
+        )}
       </div>
     </>
   );

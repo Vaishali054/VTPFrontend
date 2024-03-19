@@ -1,34 +1,49 @@
-/* Transaction page container */
 .transactions-container {
-  padding: 20px;
+  margin: 20px;
 }
 
-/* Table styles */
+/* Style for the table heading */
+.transactions-heading {
+  color: #2196f3; /* Primary color */
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Style for the table */
 .transactions-table {
   width: 100%;
   border-collapse: collapse;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
 }
 
-.transactions-table th,
-.transactions-table td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #ccc;
-}
-
+/* Style for table header */
 .transactions-table th {
-  background-color: #2196f3;
-  /* Primary color */
-  color: #ffffff;
-  /* Text color */
-}
-
-/* Table body styles */
-.transactions-table tbody tr:nth-child(even) {
+  padding: 12px;
+  text-align: left;
   background-color: #f2f2f2;
-  /* Alternate row color */
+  border-bottom: 1px solid #ddd;
 }
 
-.transactions-table tbody tr:hover {
-  background-color: #e1f5fe;
-  /* Hover row color */
+/* Style for table body */
+.transactions-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style for odd rows */
+.transactions-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Style for hover effect on rows */
+.transactions-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Style for the message when no transactions */
+.no-transactions-message {
+  font-style: italic;
+  color: #888;
+  margin-top: 20px;
 }

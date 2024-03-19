@@ -20,7 +20,7 @@ export default function Login() {
       if (response.message) {
         alert(response.message)
         document.cookie = `token=${response.token}; path=/`;
-        navigate(`/StocksList`)
+        navigate(`/StocksList/:userId`)
       } else {
         alert(response.message);
         navigate(`/`)

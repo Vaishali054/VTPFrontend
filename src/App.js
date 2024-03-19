@@ -58,8 +58,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Routes>
-          <Route path='/StocksList' element={<StockList />} />
           <Route path="/" element={<Login />} />
+          <Route path='/StocksList/:userId' element={<StockList />} />
           <Route path='/profile/:userId' element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/watchlist/:userId" element={<Watchlist />} />
