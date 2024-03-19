@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
 import TopNavBar from '../../components/topNavbar/topNavBar';
 import { fetchWatchlist } from '../../api/fetchWatchlist';
-import { addToWatchlist } from '../../api/addToWatchlist';
 import { deleteFromWatchlist } from '../../api/deleteFromWatchlist';
 
 import {
@@ -20,17 +18,13 @@ import {
 } from '@mui/material';
 
 const Watchlist = () => {
-  const { userId } = useParams();
   const [watchlist, setWatchlist] = useState([]);
-  const [symbol, setSymbol] = useState('');
 
   const fetchWatch = useCallback(async () => {
     try {
       const response = await fetchWatchlist();
-      //Only set watchlist if length>0
       if (response.status) {
         setWatchlist(response.data);
-        console.log(response.data)
       }
     } catch (error) {
       console.error(error);
@@ -50,8 +44,13 @@ const Watchlist = () => {
       if (!confirmed) {
         return;
       }
-      await deleteFromWatchlist(itemId);
-      alert('Item removed from watchlist!');
+      const response = await deleteFromWatchlist(itemId);
+      if(response.message === 'Unauthorized'){
+        alert('Unauthorized!');
+      }
+      else{
+        alert('Item removed from watchlist!');
+      }
       fetchWatch();
     } catch (error) {
       console.error('Error removing item from watchlist:', error);
@@ -68,6 +67,7 @@ const Watchlist = () => {
       <Box mt={2} display="flex" justifyContent="center">
         <Typography variant="h4">User's Watchlist</Typography>
       </Box>
+    
       <Box mt={10} display="flex" justifyContent="center">
         {watchlist.length > 0 ? (
           <TableContainer component={Paper} sx={{ width: '80%' }}>
@@ -75,9 +75,8 @@ const Watchlist = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Company Details</TableCell>
-                  <TableCell>Current Price</TableCell>
+                  <TableCell>Current Price(INR)</TableCell>
                   <TableCell>Actions</TableCell>
-                  <TableCell>Removing option</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -85,22 +84,27 @@ const Watchlist = () => {
                   <TableRow key={item._id}>
                     <TableCell>
                       <Typography variant="subtitle1" fontWeight="bold">
-                        {item.companyDetails.company_name}{' '}
+                        {item.companyDetails.Name}{' '}
                         <Typography component="span" variant="subtitle2" fontWeight="bold" color="textSecondary">
-                          ({item.companyDetails.symbol})
+                          ({item.companyDetails.Symbol})
                         </Typography>
                       </Typography>
                     </TableCell>
-                    <TableCell>${item.companyDetails.current_Price}</TableCell>
+                    <TableCell>{item.companyDetails.Current_Price}</TableCell>
                     <TableCell>
-                      <Button variant="contained" color="primary" onClick={() => stockPurchase(item._id)}>
-                        Buy/Sell
+                      <Button variant="contained" color="primary" onClick={() => stockPurchase(item._id)} sx={{ marginRight: 1 }}>
+                        Buy
                       </Button>
-                    </TableCell>
-                    <TableCell>
-                      <Button variant="contained" color="error" onClick={() => removeFromWatchlist(item._id)}>
+                      <Button variant="contained" color="error" onClick={() => stockPurchase(item._id)} sx={{ marginRight: 1 }}>
+                        Sell
+                      </Button>
+                      <Button 
+                        variant="contained" 
+                        style={{ backgroundColor: 'black', color: 'white' }} // Set background color to black and text color to white
+                        onClick={() => removeFromWatchlist(item._id)}
+                      >
                         Remove
-                      </Button>
+                    </Button>
                     </TableCell>
                   </TableRow>
                 ))}
