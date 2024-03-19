@@ -6,13 +6,11 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import HistoryIcon from '@mui/icons-material/History';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
-import { fetchProfile } from '../../api/fetchProfile'
-import { handleLogout } from '../../api/logout';
+import { fetchProfile } from '../../api/profile'
+import { handleLogout } from '../../api/authAPI';
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
@@ -99,6 +97,11 @@ export default function TopNavBar() {
     }
   };
 
+  const handleTradePage = () => {
+    setAnchorElMenu(null);
+    navigate(`/StocksList`); 
+  };
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -131,6 +134,7 @@ export default function TopNavBar() {
             >
               <MenuItem onClick={handleWatchlist}>Watchlist</MenuItem>
               <MenuItem onClick={handlePortfolio}>Portfolio</MenuItem>
+              <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
               <MenuItem onClick={handleHistory}>History</MenuItem> {/* History option */}
             </Menu>
             <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>

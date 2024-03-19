@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
-import EditProfile from '../../components/EditProfile/EditProfile';
+import TopNavBar from '../../components/topNavbar/topNavBar';
+import EditProfile from '../../components/editProfile/editProfile';
 import './profile.css';
 import profile from "../../images/profile.jpeg"
 import Button from '@material-ui/core/Button';
 import { useTheme } from '@material-ui/core/styles';
-import { fetchProfile } from '../../api/fetchProfile';
-import { deleteProfile } from '../../api/deleteProfile';
+import { fetchProfile,deleteProfile } from '../../api/profile'; 
 
 export default function Profile() {
   const [name, setName] = useState('');
@@ -22,7 +21,6 @@ export default function Profile() {
   const fetchUserData = async () => {
     try {
       const data = await fetchProfile();
-      console.log(data);
       if (data) {
         setName(data.user.name);
         setEmail_id(data.user.email_id);
@@ -37,27 +35,33 @@ export default function Profile() {
 
   const deleteAccount = async (event) => {
     event.preventDefault();
-
-    try {
-      const data = await deleteProfile();
-
-      if (data) {
-        alert(data.message);
-        window.location.reload();
-      } else {
-        alert('Error occured while deleting account');
+  
+    // Ask for confirmation
+    const confirmed = window.confirm("Are you sure you want to delete your account?");
+    
+    // If user confirms deletion
+    if (confirmed) {
+      try {
+        const data = await deleteProfile();
+  
+        if (data) {
+          alert(data.message);
+          window.location.reload();
+        } else {
+          alert('Error occurred while deleting account');
+        }
+      } catch (err) {
+        console.error('Error deleting account', err);
       }
-    } catch (err) {
-      console.error('Error deleting account', err);
     }
   };
+  
 
 
   return (
     <>
       <TopNavBar />
       <div className='center'>
-
         <div className="profile_page">
           <div className="container-profile">
             <div className="profile-details">
@@ -76,7 +80,6 @@ export default function Profile() {
                   <div className="name-box">{email_id}</div>
                 </div>
               </div>
-
             </div>
           </div>
 

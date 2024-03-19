@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTransactions } from '../../api/transaction';
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import { fetchTransactions } from '../../api/transaction.js';
+import TopNavBar from '../../components/topNavbar/topNavBar.js';
 
 const TransactionsPage = () => {
   const [transactions, setTransactions] = useState([]);

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import './portfolio.css';
 import { togglePortfolio } from '../../api/togglePortfolio';
 import { fetchPortfolio } from '../../api/fetchPortfolio';
+import TopNavBar from '../../components/topNavbar/topNavBar';
 
 const Portfolio = () => {
   const { userId } = useParams();
@@ -59,6 +59,8 @@ const Portfolio = () => {
   const totalValue = portfolio.reduce((acc, stock) => acc + stock.TotalValue, 0);
 
   return (
+    <>
+    <TopNavBar/>
     <div className="portfolio-container">
 
       <h2 className='start'>User Portfolio</h2>
@@ -67,7 +69,7 @@ const Portfolio = () => {
         <button
           onClick={handleToggleVisibility}
           className="toggle-button"
-        >
+          >
           {isPublic ? 'Make Private' : 'Make Public'}
         </button>
       </div>
@@ -82,10 +84,10 @@ const Portfolio = () => {
               outerRadius={80}
               fill="#8884d8"
               label={({ CompanyDetails, value }) => `${CompanyDetails.Symbol} (${value})`}
-            >
+              >
               {portfolio.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
+                ))}
             </Pie>
             <Tooltip />
           </PieChart>
@@ -113,8 +115,9 @@ const Portfolio = () => {
         </div>
       ) : (
         <p className="centered">No stocks in possession currently.</p>
-      )}
+        )}
     </div>
+    </>
   );
 };
 

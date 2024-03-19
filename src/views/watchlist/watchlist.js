@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import TopNavBar from '../../components/TopNavbar/TopNavBar';
+import TopNavBar from '../../components/topNavbar/topNavBar';
 import { fetchWatchlist } from '../../api/fetchWatchlist';
 import { addToWatchlist } from '../../api/addToWatchlist';
 import { deleteFromWatchlist } from '../../api/deleteFromWatchlist';
