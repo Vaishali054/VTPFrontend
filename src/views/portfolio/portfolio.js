@@ -16,8 +16,8 @@ const Portfolio = () => {
   const fetchPort = async () => {
     try {
       const response = await fetchPortfolio(userId);
-      setPortfolio(response.data.portfolio);
-      if (response.data.portfolio.status !== 'private') {
+      setPortfolio(response.portfolio);
+      if (response.portfolio.status !== 'private') {
         setIsPublic(!isPublic);
       }
 
@@ -49,8 +49,13 @@ const Portfolio = () => {
   const handleToggleVisibility = async () => {
     try {
       const response = await togglePortfolio();
-      setIsPublic(!isPublic);
-      console.log(response.data.message);
+      if(response.message !== 'Unauthorized'){
+        setIsPublic(!isPublic);
+        alert("Portfolio visibility changed!!");
+      }
+      else{
+        alert("Login to be able to change visibility of your Portfolio!");
+      }
     } catch (error) {
       console.error('Error updating portfolio visibility:', error);
     }
@@ -60,9 +65,9 @@ const Portfolio = () => {
 
   return (
     <>
-    <TopNavBar/>
+    
     <div className="portfolio-container">
-
+      <TopNavBar/>
       <h2 className='start'>User Portfolio</h2>
 
       <div className="toggle-container">
