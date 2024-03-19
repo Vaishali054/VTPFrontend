@@ -66,7 +66,7 @@ export default function Register() {
             />
           </div>
           <div>
-            <label>Email ID:</label>
+            <label>Email:</label>
             <input
               type="email"
               value={email_id}

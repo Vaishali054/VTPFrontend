@@ -32,6 +32,7 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-top: 15px;
   }
   
   .login-container form input[type="email"]:focus,
@@ -72,14 +73,26 @@
   
   .password-input-container {
     position: relative;
+    width: 100%;
+  }
+  
+  .password-input-container input[type="password"],
+  .password-input-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 15px;
   }
   
   .password-toggle {
     position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+    top: 100%;
+    right: 5px;
     cursor: pointer;
     color: #ccc;
   }
+  
+  
   
