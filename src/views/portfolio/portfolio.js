@@ -17,7 +17,7 @@ const Portfolio = () => {
     try {
       const response = await fetchPortfolio(userId);
       setPortfolio(response.portfolio);
-      if (response.portfolio.status !== 'private') {
+      if (response.status !== 'private') {
         setIsPublic(!isPublic);
       }
 
