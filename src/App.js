@@ -2,12 +2,12 @@ import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Route, Routes } from 'react-router-dom';
 import StockList from "./views/tradePage/tradePage";
-import Profile from "./views/profile/profile";
-import Login from "./views/homePage/homepage";
-import Register from "./views/register/register";
+import Profile from "./views/Profile/Profile";
+import Login from "./views/HomePage/homepage";
+import Register from "./views/Register/register";
 import Watchlist from './views/watchlist/watchlist';
-import Portfolio from "./views/portfolio/portfolio"
-import TransactionsPage from './views/history/history';
+import Portfolio from "./views/Portfolio/portfolio"
+import TransactionsPage from './views/History/history';
 
 // Define your theme
 const theme = createMuiTheme({

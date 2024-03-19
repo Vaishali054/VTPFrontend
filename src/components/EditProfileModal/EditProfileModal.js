@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Button from '@material-ui/core/Button';
-import { CustomModal, ModalContent } from "../../utilities/profileUtils";
+import { CustomModal, ModalContent } from "../../utilities/ProfileUtils";
 
 const EditProfileModal = ({ isOpen, onRequestClose, formData, handleChange, handleSubmit, togglePasswordVisibility, showPassword }) => (
   <CustomModal
