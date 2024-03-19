@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router-dom';
 import { fetchProfile } from '../../api/Profile'
-import { handleLogout } from '../../api/logout';
+import { handleLogout } from '../../api/authAPI';
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);

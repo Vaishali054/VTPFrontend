@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './homepage.css';
-import { handleLogin } from '../../api/loginauth';
+import { handleLogin } from '../../api/authAPI';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import TopNavBar from '../../components/topNavbar/topNavBar';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await handleLogin(email, password);
-      if (response.message) {
-        alert(response.message)
+      if (response.success) {
+        alert(response.message);
         document.cookie = `token=${response.token}; path=/`;
-        window.location.href = '/StocksList';
+        navigate(`/StocksList`);
       } else {
         alert(response.message);
       }

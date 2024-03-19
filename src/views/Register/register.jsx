@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './register.css';
-import { registerUser } from '../../api/register';
+import { registerUser } from '../../api/authAPI';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import TopNavBar from '../../components/topNavbar/topNavBar';
