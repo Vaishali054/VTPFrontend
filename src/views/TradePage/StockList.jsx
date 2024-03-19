@@ -19,8 +19,6 @@ export default function StockList() {
 
   const { data, isLoading, isSuccess, isError, error } = useStocksList();
 
-  console.log(data);
-
   const handlebuy = () => {};
   const handlesell = () => {};
 
