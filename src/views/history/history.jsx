@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTransactions } from '../../api/transaction';
+import { fetchTransactions } from '../../api/transaction.js';
 import TopNavBar from '../../components/topNavbar/topNavBar.js';
 
 const TransactionsPage = () => {
