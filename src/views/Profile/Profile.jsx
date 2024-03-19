@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TopNavBar from '../../components/topNavbar/topNavBar';
-import EditProfile from '../../components/EditProfile/EditProfile';
+import EditProfile from '../../components/editProfile/editProfile';
 import './profile.css';
 import profile from "../../images/profile.jpeg"
 import Button from '@material-ui/core/Button';
