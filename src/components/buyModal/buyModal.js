@@ -11,7 +11,7 @@ import {
 import { handleBuy } from "../../utilities/buySellUtils";
 import { fetchProfile } from "../../api/profile";
 
-const BuyModal = ({ stock, price }) => {
+const BuyModal = ({ stock, price, company_id }) => {
   const [openBuyDialog, setOpenBuyDialog] = React.useState(false);
   const [buyQuantity, setBuyQuantity] = React.useState(1);
   const [selectedStockSymbol, setSelectedStockSymbol] = React.useState("");
@@ -26,6 +26,7 @@ const BuyModal = ({ stock, price }) => {
       buyQuantity,
       selectedStockSymbol,
       currentPrice,
+      company_id,
       setUserBalance,
       handleBuyDialogClose,
     });
@@ -34,7 +35,7 @@ const BuyModal = ({ stock, price }) => {
   const fetchUserData = async () => {
     try {
       const data = await fetchProfile();
-      console.log(data);
+      // console.log(data)
       if (data) {
         setUserId(data.user.id);
         setUserBalance(data.user.current_Balance);
