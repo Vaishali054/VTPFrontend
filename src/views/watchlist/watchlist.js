@@ -84,7 +84,7 @@ const Watchlist = () => {
                   <TableRow key={item._id}>
                     <TableCell>
                       <Typography variant="subtitle1" fontWeight="bold">
-                        {item.companyDetails.Name}{' '}
+                        {item.companyDetails.company_name}{' '}
                         <Typography component="span" variant="subtitle2" fontWeight="bold" color="textSecondary">
                           ({item.companyDetails.Symbol})
                         </Typography>
