@@ -14,7 +14,6 @@ import {
   Button,
   Box,
   Typography,
-  TextField
 } from '@mui/material';
 
 const Watchlist = () => {

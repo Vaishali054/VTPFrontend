@@ -40,11 +40,7 @@ export default function TopNavBar() {
 
   const handleProfile = () => {
     setAnchorElAccount(null);
-    if (userId) {
-      navigate(`/profile/${userId}`);
-    } else {
-      console.error('User ID is not available');
-    }
+    navigate(`/profile`);
   };
 
   const handleLogoutClick = async () => {
@@ -78,17 +74,13 @@ export default function TopNavBar() {
 
   React.useEffect(() => {
     if (location.pathname === '/' && isLoggedIn) {
-      navigate(`/StocksList/${userId}`)
+      navigate(`/StocksList`)
     }
   }, [location, isLoggedIn]);
 
   const handleWatchlist = () => {
     setAnchorElMenu(null);
-    if (userId) {
-      navigate(`/watchlist`);
-    } else {
-      console.error('User ID is not available');
-    }
+    navigate(`/watchlist`);
   };
 
   const handlePortfolio = () => {
@@ -102,16 +94,12 @@ export default function TopNavBar() {
 
   const handleHistory = () => {
     setAnchorElMenu(null);
-    if (userId) {
-      navigate(`/history/${userId}`);
-    } else {
-      console.error('User ID is not available');
-    }
+    navigate(`/history`);
   };
 
   const handleTradePage = () => {
     setAnchorElMenu(null);
-    navigate(`/StocksList/${userId}`);
+    navigate(`/StocksList`);
   };
 
   return (

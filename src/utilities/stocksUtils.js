@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core";
 import AddIcon from "@mui/icons-material/Add";
 import { handleAddToWatchlist } from "./watchlistUtils";
 import IconButton from '@mui/material/IconButton';

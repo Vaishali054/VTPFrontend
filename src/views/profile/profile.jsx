@@ -10,7 +10,6 @@ import { fetchProfile,deleteProfile } from '../../api/profile';
 export default function Profile() {
   const [name, setName] = useState('');
   const [email_id, setEmail_id] = useState('');
-  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     fetchUserData();
@@ -24,7 +23,6 @@ export default function Profile() {
       if (data) {
         setName(data.user.name);
         setEmail_id(data.user.email_id);
-        setBalance(data.user.current_Balance);
       } else {
         console.error('Failed to fetch user data');
       }

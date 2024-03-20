@@ -63,7 +63,7 @@ const Portfolio = () => {
       console.error('Error updating portfolio visibility:', error);
     }
   };
-  const totalValue = 0;
+  let totalValue = 0;
   if(portfolio.length > 0){
     totalValue = portfolio.reduce((acc, stock) => acc + stock.TotalValue, 0);
   }
