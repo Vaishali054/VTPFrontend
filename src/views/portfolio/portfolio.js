@@ -83,7 +83,7 @@ const Portfolio = () => {
 
         <div className="toggle-container">
           <button onClick={handleToggleVisibility} className="toggle-button">
-            {isPublic ? "Make Private" : "Make Public"}
+            {isPublic ? "Make Portfolio Private" : "Make Portfolio Public"}
           </button>
         </div>
         {portfolio && portfolio.length > 0 ? (
@@ -109,14 +109,14 @@ const Portfolio = () => {
               </Pie>
               <Tooltip />
             </PieChart>
-            <div>Total Portfolio Value: ${totalValue}</div>
+            <div> <b></b>Total Portfolio Value: ${totalValue}</div>
             <table className="styled-table">
               <thead>
                 <tr>
                   <th>Company Name</th>
                   <th>Number of Stocks</th>
                   <th onClick={() => handleSort("TotalValue")}>
-                    Value of Company
+                    Value of Stock
                   </th>
                 </tr>
               </thead>
