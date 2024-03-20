@@ -32,17 +32,21 @@ const TransactionsPage = () => {
               <th>Price</th>
               <th>Quantity</th>
               <th>Transaction Type</th>
+              <th>Transaction Date</th>
+              <th>Transaction Time</th>
             </tr>
           </thead>
           <tbody>
             {transactions &&
               transactions.map((transaction, index) => (
-                <tr key={transaction._id}>
+                <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{transaction.companyName}</td>
+                  <td>{transaction.company_name}</td>
                   <td>{transaction.price}</td>
                   <td>{transaction.quantity}</td>
                   <td>{transaction.transactionType}</td>
+                  <td>{transaction.transactionsDate}</td>
+                  <td>{transaction.transactionTime}</td>
                 </tr>
               ))}
           </tbody>
