@@ -18,7 +18,7 @@ export default function StockList() {
 
   const { data, isLoading, isSuccess, isError, error } = useStocksList();
 
-  let rows = formatRows(data,isSuccess);;
+  let rows = formatRows(data, isSuccess);
 
   const filteredRows = rows.filter((row) => {
     if (row && row.stock) {
@@ -30,7 +30,7 @@ export default function StockList() {
 
   const getRowClassName = (params) => {
     const filteredIndex = filteredRows.findIndex(
-      (row) => row.id === params.row.id
+      (row) => row.id === params.row.id,
     );
     return filteredIndex % 2 === 0 ? "even-row" : "odd-row";
   };
@@ -51,7 +51,6 @@ export default function StockList() {
         }}
       >
         <Grid container justifyContent="center">
-
           <Grid item xs={12} sm={10} md={7.5}>
             <TextField
               label="Search by Stock Name"
@@ -63,10 +62,11 @@ export default function StockList() {
           </Grid>
 
           <Grid item xs={12} sm={10} md={7.5}>
-            {isLoading && 
-            <div className="center">
-              <CircularProgress  />
-            </div>}
+            {isLoading && (
+              <div className="center">
+                <CircularProgress />
+              </div>
+            )}
 
             {(isError || data === "Network Error") && (
               <Typography variant="body1">
@@ -81,7 +81,6 @@ export default function StockList() {
               />
             )}
           </Grid>
-          
         </Grid>
       </div>
     </div>

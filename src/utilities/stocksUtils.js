@@ -1,10 +1,8 @@
-import { Button } from "@material-ui/core";
 import AddIcon from "@mui/icons-material/Add";
 import { handleAddToWatchlist } from "./watchlistUtils";
-import IconButton from '@mui/material/IconButton';
-
-const handlebuy = () => {};
-const handlesell = () => {};
+import IconButton from "@mui/material/IconButton";
+import BuyModal from "../components/buyModal/buyModal";
+import SellModal from "../components/sellModal/sellModal";
 
 export const columns = [
   {
@@ -84,8 +82,8 @@ export const columns = [
     ),
   },
   {
-    field: "lastclose",
-    headerName: "Last Close",
+    field: "currentprice",
+    headerName: "Current Price",
     sortable: true,
     width: 130,
     renderHeader: (params) => (
@@ -145,34 +143,14 @@ export const columns = [
     renderCell: (params) => {
       return (
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <Button
-            onClick={handlebuy}
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              padding: "5px",
-              marginRight: "5px",
-            }}
-          >
-            Buy
-          </Button>
-          <Button
-            onClick={handlesell}
-            style={{
-              backgroundColor: "red",
-              color: "white",
-              padding: "5px",
-              marginRight: "5px"
-            }}
-          >
-            Sell
-          </Button>
+          <BuyModal stock={params.row.stock} price={params.row.currentprice} />
+          <SellModal stock={params.row.stock} price={params.row.currentprice} />
           <IconButton
-                onClick={() => handleAddToWatchlist(params.row.symbol)}
-                color="inherit"
-              >
-                <AddIcon/>
-              </IconButton>
+            onClick={() => handleAddToWatchlist(params.row.symbol)}
+            color="inherit"
+          >
+            <AddIcon />
+          </IconButton>
         </div>
       );
     },
@@ -192,7 +170,7 @@ export const formatRows = (data, isSuccess) => {
       stock: stockData.company_name,
       dayhigh: stockData.max_stock_price,
       daylow: stockData.min_stock_price,
-      lastclose: stockData.current_Price,
+      currentprice: stockData.current_Price,
       change: stockData.change,
       pChange: stockData.pChange,
       symbol: stockData.symbol,
