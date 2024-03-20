@@ -41,11 +41,11 @@ const TransactionsPage = () => {
               transactions.map((transaction, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{transaction.company_name}</td>
+                  <td>{transaction.companyName}</td>
                   <td>{transaction.price}</td>
                   <td>{transaction.quantity}</td>
                   <td>{transaction.transactionType}</td>
-                  <td>{transaction.transactionsDate}</td>
+                  <td>{transaction.transactionDate}</td>
                   <td>{transaction.transactionTime}</td>
                 </tr>
               ))}
