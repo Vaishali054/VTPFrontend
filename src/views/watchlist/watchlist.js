@@ -85,11 +85,11 @@ const Watchlist = () => {
                       <Typography variant="subtitle1" fontWeight="bold">
                         {item.companyDetails.company_name}{' '}
                         <Typography component="span" variant="subtitle2" fontWeight="bold" color="textSecondary">
-                          ({item.companyDetails.Symbol})
+                          ({item.companyDetails.symbol})
                         </Typography>
                       </Typography>
                     </TableCell>
-                    <TableCell>{item.companyDetails.Current_Price}</TableCell>
+                    <TableCell>{item.companyDetails.current_Price}</TableCell>
                     <TableCell>
                       <Button variant="contained" color="primary" onClick={() => stockPurchase(item._id)} sx={{ marginRight: 1 }}>
                         Buy
