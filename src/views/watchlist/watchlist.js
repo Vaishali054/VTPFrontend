@@ -104,11 +104,11 @@ const Watchlist = () => {
                       >
                         <BuyModal
                           price={item.companyDetails.current_Price}
-                          stock={item.companyDetails.company_name}
+                          stock={item.companyDetails.symbol}
                         />
                         <SellModal
                           price={item.companyDetails.current_Price}
-                          stock={item.companyDetails.company_name}
+                          stock={item.companyDetails.symbol}
                         />
                         <Button
                           style={{
