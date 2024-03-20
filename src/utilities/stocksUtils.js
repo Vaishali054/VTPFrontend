@@ -145,8 +145,8 @@ export const columns = [
     renderCell: (params) => {
       return (
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <BuyModal stock={params.row.stock} price={params.row.currentprice}/>
-          <SellModal stock={params.row.stock} price={params.row.currentprice}/>
+          <BuyModal stock={params.row.stock} price={params.row.currentprice} company_id={params.row.company_id}/>
+          <SellModal stock={params.row.stock} price={params.row.currentprice} company_id={params.row.company_id}/>
           <IconButton
                 onClick={() => handleAddToWatchlist(params.row.symbol)}
                 color="inherit"
@@ -176,6 +176,7 @@ export const formatRows = (data, isSuccess) => {
       change: stockData.change,
       pChange: stockData.pChange,
       symbol: stockData.symbol,
+      company_id: stockData.Company_Id,
     }));
   }
   return rows;

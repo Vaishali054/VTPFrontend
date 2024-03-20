@@ -35,7 +35,7 @@ const SellModal = ({ stock, price }) => {
   const fetchUserData = async () => {
     try {
       const data = await fetchProfile();
-      console.log(data)
+      // console.log(data)
       if (data) {
         setUserId(data.user.id);
         setUserBalance(data.user.current_Balance);

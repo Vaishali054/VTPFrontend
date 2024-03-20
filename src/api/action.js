@@ -1,9 +1,9 @@
 import axiosInstance from '../infra/axiosInstance';
 import { AxiosError } from 'axios';
 
-export const updateBalance = async (balanceData) => {
+export const buyStock = async (symbol, quantity) => {
     try {
-        const res = await axiosInstance.post('/auth/update-balance', balanceData);
+        const res = await axiosInstance.post('/action/buy-stock', {symbol, quantity});
         return res.data;
     } catch (e) {
         if (e instanceof AxiosError) {
@@ -13,9 +13,9 @@ export const updateBalance = async (balanceData) => {
     }
 };
 
-export const addTransaction = async (transactionData) => {
+export const sellStock = async (sellData) => {
     try {
-        const res = await axiosInstance.post('/transaction/add-transaction', transactionData);
+        const res = await axiosInstance.post('/action/sell-stock', sellData);
         return res.data;
     } catch (e) {
         if (e instanceof AxiosError) {
