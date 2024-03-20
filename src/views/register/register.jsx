@@ -33,7 +33,6 @@ export default function Register() {
         alert("Registered successfully!");
         window.location.href = "/";
       } else {
-        window.location.href = "/";
         if (
           error &&
           error.response &&
@@ -44,6 +43,7 @@ export default function Register() {
         } else {
           alert(message || "Registration failed. Please try again.");
         }
+        window.location.href = "/register";
       }
     } catch (error) {
       console.error("Error registering user:", error);
