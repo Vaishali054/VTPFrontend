@@ -159,9 +159,9 @@ export default function TopNavBar() {
                 <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}></Typography>
                 <IconButton color="inherit">
                   <AttachMoneyIcon />
-                  <Typography>{userBalance}</Typography>
+                  <Typography>{parseFloat(userBalance).toFixed(2)}</Typography>
                 </IconButton>
-                <div>
+                <div style={{ marginLeft: '10px' }}>
                   <IconButton
                     size="large"
                     aria-label="account of current user"
