@@ -11,6 +11,7 @@ import Menu from '@mui/material/Menu';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { fetchProfile } from '../../api/profile';
 import { handleLogout } from '../../api/authAPI';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 export default function TopNavBar() {
   const [anchorElMenu, setAnchorElMenu] = React.useState(null);
@@ -19,6 +20,7 @@ export default function TopNavBar() {
   const location = useLocation();
   const [userId, setUserId] = React.useState('');
   const [isLoggedIn, setIsLoggedIn] = React.useState(false); 
+  const [userBalance, setUserBalance] = React.useState(0);
 
   const handleMenu = (event) => {
     setAnchorElMenu(event.currentTarget);
@@ -60,6 +62,7 @@ export default function TopNavBar() {
       const data = await fetchProfile();
       if (data) {
         setUserId(data.user.id);
+        setUserBalance(data.user.current_Balance);
         setIsLoggedIn(true); 
       } else {
         console.error('Failed to fetch user data');
@@ -153,6 +156,11 @@ export default function TopNavBar() {
                   <MenuItem onClick={handleTradePage}>Trade Page</MenuItem>
                   <MenuItem onClick={handleHistory}>History</MenuItem> 
                 </Menu>
+                <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}></Typography>
+                <IconButton color="inherit">
+                  <AttachMoneyIcon />
+                  <Typography>{userBalance}</Typography>
+                </IconButton>
                 <div>
                   <IconButton
                     size="large"
