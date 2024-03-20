@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Dialog,
   DialogTitle,
@@ -6,18 +6,18 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-  TextField
-} from '@material-ui/core';
-import { handleSell } from '../../utilities/buySellUtils'; // Assuming you have a handleSell function in your utilities
-import { fetchProfile } from '../../api/profile';
+  TextField,
+} from "@material-ui/core";
+import { handleSell } from "../../utilities/buySellUtils"; // Assuming you have a handleSell function in your utilities
+import { fetchProfile } from "../../api/profile";
 
 const SellModal = ({ stock, price }) => {
   const [openSellDialog, setOpenSellDialog] = React.useState(false);
   const [sellQuantity, setSellQuantity] = React.useState(1);
-  const [selectedStockSymbol, setSelectedStockSymbol] = React.useState('');
+  const [selectedStockSymbol, setSelectedStockSymbol] = React.useState("");
   const [currentPrice, setCurrentPrice] = React.useState(0);
   const [userBalance, setUserBalance] = React.useState(0);
-  const [userId, setUserId] = React.useState('');
+  const [userId, setUserId] = React.useState("");
 
   const handleSellAction = async () => {
     // Implement handleSell function from utilities
@@ -28,7 +28,7 @@ const SellModal = ({ stock, price }) => {
       selectedStockSymbol,
       currentPrice,
       setUserBalance,
-      handleSellDialogClose
+      handleSellDialogClose,
     });
   };
 
@@ -40,10 +40,10 @@ const SellModal = ({ stock, price }) => {
         setUserId(data.user.id);
         setUserBalance(data.user.current_Balance);
       } else {
-        console.error('Failed to fetch user data');
+        console.error("Failed to fetch user data");
       }
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error("Error fetching user data:", error);
     }
   };
 
@@ -84,7 +84,7 @@ const SellModal = ({ stock, price }) => {
           <DialogContentText>
             Please enter the quantity you want to sell.
           </DialogContentText>
-          
+
           <TextField
             margin="dense"
             label="Stock Symbol"

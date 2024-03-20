@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./editProfile.css";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import { editProfile } from "../../api/profile";
 import EditProfileModal from "../editProfileModal/editProfileModal";
 
@@ -47,7 +47,7 @@ export default function EditProfile(props) {
 
     for (const key in formData) {
       // Skip the password field if it's empty
-      if (key === 'password' && !formData[key]) {
+      if (key === "password" && !formData[key]) {
         continue;
       }
       if (formData[key] !== props[key]) {
@@ -77,7 +77,12 @@ export default function EditProfile(props) {
 
   return (
     <>
-      <Button onClick={openProfileModal} className="hero-button" variant="contained" color="primary">
+      <Button
+        onClick={openProfileModal}
+        className="hero-button"
+        variant="contained"
+        color="primary"
+      >
         Edit Profile
       </Button>
 

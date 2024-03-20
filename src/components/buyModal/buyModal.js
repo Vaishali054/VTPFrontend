@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Dialog,
   DialogTitle,
@@ -6,18 +6,18 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-  TextField
-} from '@material-ui/core';
-import { handleBuy } from '../../utilities/buySellUtils';
-import { fetchProfile } from '../../api/profile';
+  TextField,
+} from "@material-ui/core";
+import { handleBuy } from "../../utilities/buySellUtils";
+import { fetchProfile } from "../../api/profile";
 
 const BuyModal = ({ stock, price, company_id }) => {
   const [openBuyDialog, setOpenBuyDialog] = React.useState(false);
   const [buyQuantity, setBuyQuantity] = React.useState(1);
-  const [selectedStockSymbol, setSelectedStockSymbol] = React.useState('');
+  const [selectedStockSymbol, setSelectedStockSymbol] = React.useState("");
   const [currentPrice, setCurrentPrice] = React.useState(0);
   const [userBalance, setUserBalance] = React.useState(0);
-  const [userId, setUserId] = React.useState('');
+  const [userId, setUserId] = React.useState("");
 
   const handleBuyAction = async () => {
     await handleBuy({
@@ -28,7 +28,7 @@ const BuyModal = ({ stock, price, company_id }) => {
       currentPrice,
       company_id,
       setUserBalance,
-      handleBuyDialogClose
+      handleBuyDialogClose,
     });
   };
 
@@ -40,10 +40,10 @@ const BuyModal = ({ stock, price, company_id }) => {
         setUserId(data.user.id);
         setUserBalance(data.user.current_Balance);
       } else {
-        console.error('Failed to fetch user data');
+        console.error("Failed to fetch user data");
       }
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error("Error fetching user data:", error);
     }
   };
 
@@ -84,7 +84,7 @@ const BuyModal = ({ stock, price, company_id }) => {
           <DialogContentText>
             Please enter the quantity you want to buy.
           </DialogContentText>
-          
+
           <TextField
             margin="dense"
             label="Stock Symbol"

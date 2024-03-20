@@ -1,9 +1,9 @@
-import axiosInstance from '../infra/axiosInstance';
-import { AxiosError } from 'axios';
+import axiosInstance from "../infra/axiosInstance";
+import { AxiosError } from "axios";
 
 export const handleLogin = async (email_id, password) => {
   try {
-    const response = await axiosInstance.post('/login', { email_id, password });
+    const response = await axiosInstance.post("/login", { email_id, password });
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -15,7 +15,7 @@ export const handleLogin = async (email_id, password) => {
 
 export const handleLogout = async () => {
   try {
-    const response = await axiosInstance.post('/logout');
+    const response = await axiosInstance.post("/logout");
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -27,7 +27,7 @@ export const handleLogout = async () => {
 
 export const registerUser = async (name, email_id, password) => {
   try {
-    const response = await axiosInstance.post('/register', {
+    const response = await axiosInstance.post("/register", {
       name,
       email_id,
       password,
@@ -39,10 +39,14 @@ export const registerUser = async (name, email_id, password) => {
       return { success: false, message: response.data.message };
     }
   } catch (error) {
-    if (error.response && error.response.status === 409 && error.response.data.message === 'Email already in use') {
-      return { success: false, message: 'Email already in use' };
+    if (
+      error.response &&
+      error.response.status === 409 &&
+      error.response.data.message === "Email already in use"
+    ) {
+      return { success: false, message: "Email already in use" };
     } else {
-      console.error('Error registering user:', error);
+      console.error("Error registering user:", error);
       return { success: false, error };
     }
   }
