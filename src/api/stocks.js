@@ -28,7 +28,7 @@ export const updateBalance = async (balanceData) => {
 export const fetchTransactions = async () => {
   try {
     const response = await axiosInstance.get("/history");
-    return response.data.transactions;
+    return response.data.data;
   } catch (error) {
     console.error("Error fetching transactions:", error);
     throw error;
