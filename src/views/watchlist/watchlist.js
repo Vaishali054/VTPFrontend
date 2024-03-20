@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TopNavBar from '../../components/topNavbar/topNavBar';
 import { fetchWatchlist, deleteFromWatchlist } from '../../api/watchlist';
+import BuyModal from '../../components/buyModal/buyModal';
+import SellModal from '../../components/sellModal/sellModal';
 
 import {
   Table,
@@ -21,6 +23,7 @@ const Watchlist = () => {
   const fetchWatch = useCallback(async () => {
     try {
       const response = await fetchWatchlist();
+      console.log(response);
       if (response.status) {
         setWatchlist(response.data);
       }
@@ -90,19 +93,17 @@ const Watchlist = () => {
                     </TableCell>
                     <TableCell>{item.companyDetails.current_Price}</TableCell>
                     <TableCell>
-                      <Button variant="contained" color="primary" onClick={() => stockPurchase(item._id)} sx={{ marginRight: 1 }}>
-                        Buy
-                      </Button>
-                      <Button variant="contained" color="error" onClick={() => stockPurchase(item._id)} sx={{ marginRight: 1 }}>
-                        Sell
-                      </Button>
-                      <Button 
-                        variant="contained" 
-                        style={{ backgroundColor: 'black', color: 'white' }} // Set background color to black and text color to white
-                        onClick={() => removeFromWatchlist(item._id)}
-                      >
-                        Remove
-                    </Button>
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <BuyModal price={item.companyDetails.current_Price} stock={item.companyDetails.company_name}/>
+                        <SellModal price={item.companyDetails.current_Price} stock={item.companyDetails.company_name}/>
+                        <Button 
+                          
+                          style={{ backgroundColor: 'black', color: 'white',padding: "5px 7px",marginRight: "5px" }} // Add margin for spacing
+                          onClick={() => removeFromWatchlist(item._id)}
+                        >
+                          Remove
+                        </Button>
+                    </div>
                     </TableCell>
                   </TableRow>
                 ))}
