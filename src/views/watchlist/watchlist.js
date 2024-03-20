@@ -58,10 +58,6 @@ const Watchlist = () => {
     }
   };
 
-  const stockPurchase = async (itemId) => {
-
-  };
-
   return (
     <div>
       <TopNavBar />
