@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import TopNavBar from '../../components/topNavbar/topNavBar';
-import { fetchWatchlist, deleteFromWatchlist } from '../../api/watchlist';
-import BuyModal from '../../components/buyModal/buyModal';
-import SellModal from '../../components/sellModal/sellModal';
+import React, { useState, useEffect, useCallback } from "react";
+import TopNavBar from "../../components/topNavbar/topNavBar";
+import { fetchWatchlist, deleteFromWatchlist } from "../../api/watchlist";
+import BuyModal from "../../components/buyModal/buyModal";
+import SellModal from "../../components/sellModal/sellModal";
 
 import {
   Table,
@@ -15,7 +15,7 @@ import {
   Button,
   Box,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
 const Watchlist = () => {
   const [watchlist, setWatchlist] = useState([]);
@@ -40,21 +40,22 @@ const Watchlist = () => {
 
   const removeFromWatchlist = async (itemId) => {
     try {
-      const confirmed = window.confirm('Are you sure you want to remove this item from the watchlist?');
+      const confirmed = window.confirm(
+        "Are you sure you want to remove this item from the watchlist?",
+      );
 
       if (!confirmed) {
         return;
       }
       const response = await deleteFromWatchlist(itemId);
-      if(response.message === 'Unauthorized'){
-        alert('Unauthorized!');
-      }
-      else{
-        alert('Item removed from watchlist!');
+      if (response.message === "Unauthorized") {
+        alert("Unauthorized!");
+      } else {
+        alert("Item removed from watchlist!");
       }
       fetchWatch();
     } catch (error) {
-      console.error('Error removing item from watchlist:', error);
+      console.error("Error removing item from watchlist:", error);
     }
   };
 
@@ -64,10 +65,10 @@ const Watchlist = () => {
       <Box mt={2} display="flex" justifyContent="center">
         <Typography variant="h4">User's Watchlist</Typography>
       </Box>
-    
+
       <Box mt={10} display="flex" justifyContent="center">
         {watchlist.length > 0 ? (
-          <TableContainer component={Paper} sx={{ width: '80%' }}>
+          <TableContainer component={Paper} sx={{ width: "80%" }}>
             <Table sx={{ minWidth: 650 }}>
               <TableHead>
                 <TableRow>
@@ -81,25 +82,46 @@ const Watchlist = () => {
                   <TableRow key={item._id}>
                     <TableCell>
                       <Typography variant="subtitle1" fontWeight="bold">
-                        {item.companyDetails.company_name}{' '}
-                        <Typography component="span" variant="subtitle2" fontWeight="bold" color="textSecondary">
+                        {item.companyDetails.company_name}{" "}
+                        <Typography
+                          component="span"
+                          variant="subtitle2"
+                          fontWeight="bold"
+                          color="textSecondary"
+                        >
                           ({item.companyDetails.symbol})
                         </Typography>
                       </Typography>
                     </TableCell>
                     <TableCell>{item.companyDetails.current_Price}</TableCell>
                     <TableCell>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <BuyModal price={item.companyDetails.current_Price} stock={item.companyDetails.company_name}/>
-                        <SellModal price={item.companyDetails.current_Price} stock={item.companyDetails.company_name}/>
-                        <Button 
-                          
-                          style={{ backgroundColor: 'black', color: 'white',padding: "5px 7px",marginRight: "5px" }} // Add margin for spacing
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                        }}
+                      >
+                        <BuyModal
+                          price={item.companyDetails.current_Price}
+                          stock={item.companyDetails.company_name}
+                        />
+                        <SellModal
+                          price={item.companyDetails.current_Price}
+                          stock={item.companyDetails.company_name}
+                        />
+                        <Button
+                          style={{
+                            backgroundColor: "black",
+                            color: "white",
+                            padding: "5px 7px",
+                            marginRight: "5px",
+                          }} // Add margin for spacing
                           onClick={() => removeFromWatchlist(item._id)}
                         >
                           Remove
                         </Button>
-                    </div>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}

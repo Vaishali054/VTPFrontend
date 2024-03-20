@@ -1,9 +1,8 @@
 import AddIcon from "@mui/icons-material/Add";
 import { handleAddToWatchlist } from "./watchlistUtils";
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
 import BuyModal from "../components/buyModal/buyModal";
 import SellModal from "../components/sellModal/sellModal";
-
 
 export const columns = [
   {
@@ -144,13 +143,13 @@ export const columns = [
     renderCell: (params) => {
       return (
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <BuyModal stock={params.row.stock} price={params.row.currentprice}/>
-          <SellModal stock={params.row.stock} price={params.row.currentprice}/>
+          <BuyModal stock={params.row.stock} price={params.row.currentprice} />
+          <SellModal stock={params.row.stock} price={params.row.currentprice} />
           <IconButton
-                onClick={() => handleAddToWatchlist(params.row.symbol)}
-                color="inherit"
-              >
-                <AddIcon/>
+            onClick={() => handleAddToWatchlist(params.row.symbol)}
+            color="inherit"
+          >
+            <AddIcon />
           </IconButton>
         </div>
       );

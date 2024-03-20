@@ -1,5 +1,5 @@
-import axiosInstance from '../infra/axiosInstance';
-import { AxiosError } from 'axios';
+import axiosInstance from "../infra/axiosInstance";
+import { AxiosError } from "axios";
 
 export const fetchPortfolio = async (userId) => {
   try {

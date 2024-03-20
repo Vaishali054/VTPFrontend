@@ -2,19 +2,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px
+  margin-top: 50px;
 }
 
 .even-row {
-  background-color: #F4F7F6;
+  background-color: #f4f7f6;
 }
 
 .odd-row {
-  background-color: #E9F1F4;
+  background-color: #e9f1f4;
 }
 
 .MuiDataGrid-columnHeaderTitleContainer {
   font-size: 15px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

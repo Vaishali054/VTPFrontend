@@ -17,7 +17,7 @@
 }
 
 .register-container form div {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .register-container form label {
@@ -28,7 +28,7 @@
   margin-bottom: 30px; /* Increase the margin-bottom for the div containing password fields 
 } */
 
-.register-container form input[type="password"]{
+.register-container form input[type="password"] {
   width: 100%;
   height: fit-content;
   padding: 10px;
@@ -99,5 +99,5 @@
 }
 
 .confirm-password {
-  margin-top: 20px; 
+  margin-top: 20px;
 }

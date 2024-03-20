@@ -1,5 +1,5 @@
-import axiosInstance from '../infra/axiosInstance';
-import { AxiosError } from 'axios';
+import axiosInstance from "../infra/axiosInstance";
+import { AxiosError } from "axios";
 
 export const addToWatchlist = async (symbol) => {
   try {
@@ -15,7 +15,9 @@ export const addToWatchlist = async (symbol) => {
 
 export const deleteFromWatchlist = async (itemId) => {
   try {
-    const res = await axiosInstance.delete(`/watchlist/remove`, { data: { itemId: itemId } });
+    const res = await axiosInstance.delete(`/watchlist/remove`, {
+      data: { itemId: itemId },
+    });
     return res.data;
   } catch (e) {
     if (e instanceof AxiosError) {

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { fetchTransactions } from '../../api/stocks';
-import TopNavBar from '../../components/topNavbar/topNavBar.js';
-import './history.css';
+import React, { useState, useEffect } from "react";
+import { fetchTransactions } from "../../api/stocks";
+import TopNavBar from "../../components/topNavbar/topNavBar.js";
+import "./history.css";
 
 const TransactionsPage = () => {
   const [transactions, setTransactions] = useState([]);
@@ -15,7 +15,7 @@ const TransactionsPage = () => {
       const transactionsData = await fetchTransactions();
       setTransactions(transactionsData);
     } catch (error) {
-      console.error('Error fetching transactions:', error);
+      console.error("Error fetching transactions:", error);
     }
   };
 
@@ -35,19 +35,22 @@ const TransactionsPage = () => {
             </tr>
           </thead>
           <tbody>
-            {transactions && transactions.map((transaction, index) => (
-              <tr key={transaction._id}>
-                <td>{index + 1}</td>
-                <td>{transaction.companyName}</td>
-                <td>{transaction.price}</td>
-                <td>{transaction.quantity}</td>
-                <td>{transaction.transactionType}</td>
-              </tr>
-            ))}
+            {transactions &&
+              transactions.map((transaction, index) => (
+                <tr key={transaction._id}>
+                  <td>{index + 1}</td>
+                  <td>{transaction.companyName}</td>
+                  <td>{transaction.price}</td>
+                  <td>{transaction.quantity}</td>
+                  <td>{transaction.transactionType}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
         {transactions && transactions.length === 0 && (
-          <p className="no-transactions-message">You have not performed any transactions yet!</p>
+          <p className="no-transactions-message">
+            You have not performed any transactions yet!
+          </p>
         )}
       </div>
     </>

@@ -1,10 +1,18 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import { CustomModal, ModalContent } from "../../utilities/profileUtils";
 
-const EditProfileModal = ({ isOpen, onRequestClose, formData, handleChange, handleSubmit, togglePasswordVisibility, showPassword }) => (
+const EditProfileModal = ({
+  isOpen,
+  onRequestClose,
+  formData,
+  handleChange,
+  handleSubmit,
+  togglePasswordVisibility,
+  showPassword,
+}) => (
   <CustomModal
     isOpen={isOpen}
     onRequestClose={onRequestClose}
@@ -47,7 +55,10 @@ const EditProfileModal = ({ isOpen, onRequestClose, formData, handleChange, hand
             value={formData.password}
             onChange={handleChange}
           />
-          <span className="password-toggle-edit" onClick={togglePasswordVisibility}>
+          <span
+            className="password-toggle-edit"
+            onClick={togglePasswordVisibility}
+          >
             <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
           </span>
         </div>
@@ -55,7 +66,12 @@ const EditProfileModal = ({ isOpen, onRequestClose, formData, handleChange, hand
           <Button variant="contained" color="primary" type="submit">
             Save Changes
           </Button>
-          <Button variant="contained" color="secondary" type="button" onClick={onRequestClose}>
+          <Button
+            variant="contained"
+            color="secondary"
+            type="button"
+            onClick={onRequestClose}
+          >
             Close
           </Button>
         </div>

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './homepage.css';
-import { handleLogin } from '../../api/authAPI';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./homepage.css";
+import { handleLogin } from "../../api/authAPI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import TopNavBar from '../../components/topNavbar/topNavBar';
-import { useNavigate } from 'react-router-dom';
+import TopNavBar from "../../components/topNavbar/topNavBar";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -18,16 +18,16 @@ export default function Login() {
     try {
       const response = await handleLogin(email, password);
       if (response.message) {
-        alert(response.message)
+        alert(response.message);
         document.cookie = `token=${response.token}; path=/`;
-        navigate(`/StocksList`)
+        navigate(`/StocksList`);
       } else {
         alert(response.message);
-        navigate(`/`)
+        navigate(`/`);
       }
     } catch (error) {
-      console.error('Error during login:', error);
-      alert('Internal server error. Please try again later.');
+      console.error("Error during login:", error);
+      alert("Internal server error. Please try again later.");
     }
   };
 
@@ -54,12 +54,15 @@ export default function Login() {
             <label>Password:</label>
             <div className="password-input-container">
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <span className="password-toggle" onClick={togglePasswordVisibility}>
+              <span
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+              >
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
             </div>
@@ -67,7 +70,9 @@ export default function Login() {
           <button type="submit">Login</button>
         </form>
         <div>
-          <p>Don't have an account? <Link to="/register">Register</Link></p>
+          <p>
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
         </div>
       </div>
     </>
