@@ -1,4 +1,4 @@
-import { addToWatchlist } from '../api/addToWatchlist';
+import { addToWatchlist } from '../api/watchlist';
 
 export const handleAddToWatchlist = async (symbol) => {
     try {

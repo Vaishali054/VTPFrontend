@@ -1,4 +1,4 @@
-import { updateBalance } from '../api/updateBalance';
+import { updateBalance } from '../api/stocks';
 
 export const handleBuy = async ({ userId, userBalance, buyQuantity, selectedStockSymbol, currentPrice, setUserBalance, handleBuyDialogClose }) => {
   const totalCost = buyQuantity * currentPrice;

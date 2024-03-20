@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTransactions } from '../../api/transaction.js';
+import { fetchTransactions } from '../../api/stocks';
 import TopNavBar from '../../components/topNavbar/topNavBar.js';
 import './history.css';
 

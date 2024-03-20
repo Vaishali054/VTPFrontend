@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TopNavBar from '../../components/topNavbar/topNavBar';
-import { fetchWatchlist } from '../../api/fetchWatchlist';
-import { deleteFromWatchlist } from '../../api/deleteFromWatchlist';
+import { fetchWatchlist, deleteFromWatchlist } from '../../api/watchlist';
 
 import {
   Table,

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import './portfolio.css';
-import { togglePortfolio } from '../../api/togglePortfolio';
-import { fetchPortfolio } from '../../api/fetchPortfolio';
+import { fetchPortfolio, togglePortfolio } from '../../api/portfolio';
 import TopNavBar from '../../components/topNavbar/topNavBar';
 
 const Portfolio = () => {
