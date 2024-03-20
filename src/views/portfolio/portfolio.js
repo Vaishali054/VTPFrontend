@@ -93,7 +93,7 @@ const Portfolio = () => {
               cy={200}
               outerRadius={80}
               fill="#8884d8"
-              label={({ CompanyDetails, value }) => `${CompanyDetails.Symbol} (${value})`}
+              label={({ CompanyDetails, value }) => `${CompanyDetails.symbol} (${value})`}
               >
               {portfolio.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -115,7 +115,7 @@ const Portfolio = () => {
             <tbody>
               {sortedPortfolio.map((stock) => (
                 <tr key={stock._id}>
-                  <td>{stock.CompanyDetails.Name}</td>
+                  <td>{stock.CompanyDetails.company_name}</td>
                   <td>{stock.Quantity}</td>
                   <td>{stock.TotalValue}</td>
                 </tr>
