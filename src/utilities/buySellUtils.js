@@ -3,15 +3,18 @@ import { updateBalance } from '../api/updateBalance';
 export const handleBuy = async ({ userId, userBalance, buyQuantity, selectedStockSymbol, currentPrice, setUserBalance, handleBuyDialogClose }) => {
   const totalCost = buyQuantity * currentPrice;
 
-  console.log(userId, userBalance);
+  if (Number(userBalance) < totalCost) {
+    alert('Insufficient balance');
+    handleBuyDialogClose();
+    return;
+  }
+
   const balanceData = {
     user: {
       id: userId,
     },
     current_Balance: Number(userBalance) - Number(totalCost),
   };
-
-  console.log(balanceData);
 
   try {
     const data = await updateBalance(balanceData);
@@ -32,15 +35,12 @@ export const handleBuy = async ({ userId, userBalance, buyQuantity, selectedStoc
 export const handleSell = async ({ userId, userBalance, sellQuantity, selectedStockSymbol, currentPrice, setUserBalance, handleSellDialogClose }) => {
     const totalCost = sellQuantity * currentPrice;
 
-    console.log(userId, userBalance);
     const balanceData = {
         user: {
             id: userId,
         },
         current_Balance: Number(userBalance) + Number(totalCost),
     };
-
-    console.log(balanceData);
 
     try {
         const data = await updateBalance(balanceData);

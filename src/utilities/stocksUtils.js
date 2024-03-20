@@ -6,8 +6,6 @@ import BuyModal from "../components/buyModal/buyModal";
 import SellModal from "../components/sellModal/sellModal";
 
 
-const handlesell = () => {};
-
 export const columns = [
   {
     field: "stock",
