@@ -46,7 +46,7 @@
 
 1. **User Identification:** Displays the user's name and email for easy identification.
 2. **Editing Functionality:** Allows users to edit their profile (name, email, password) information conveniently.
-3. **Account Deletion:** Provides the functionality to securely delete the user account.
+3. **Account Deletion:** This feature provides the functionality to securely delete user accounts, while also allowing authorized personnel (with database access) to recover accounts if needed.
 
 ## Trade Page
 
