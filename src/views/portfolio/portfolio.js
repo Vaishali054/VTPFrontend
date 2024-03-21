@@ -88,7 +88,7 @@ const Portfolio = () => {
         </div>
         {portfolio && portfolio.length > 0 ? (
           <div className="centered">
-            <PieChart width={400} height={400} className="centered">
+            <PieChart width={400} height={400} className="styled-pie-chart">
               <Pie
                 dataKey="TotalValue"
                 data={portfolio}
