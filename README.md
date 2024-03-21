@@ -112,5 +112,5 @@
 ## Transaction History
 
 <div style="text-align: center;">
-    <img src="src/images/readmeImages/history.png" alt="History" width="550" height="300">
+    <img src="src/images/readmeImages/history.png" alt="History" width="1000" height="300">
 </div>
