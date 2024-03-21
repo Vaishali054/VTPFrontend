@@ -81,11 +81,32 @@
     <img src="src/images/readmeImages/watchlist.png" alt="Watchlist" width="550" height="300">
 </div>
 
+### Key Features:
+
+1. **Stock Trading:** Users can conveniently buy and sell stocks added to their Watchlist.
+2. **Real-time Market Data:** Market data is refreshed periodically for up-to-date information. (Every 2 minutes)
+
+### Market Data Details:
+
+- **Current Price:** Represents the last close Value of a stock
+
 ## Portfolio
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/portfolio.png" alt="Portfolio" width="550" height="300">
 </div>
+
+### UI Features:
+
+1. **Sortable Column:** Sortable stock value column in ascending or descending order for better understanding of most and least performing stocks
+2. **Pie Chart:** Pie Chart representation of portfolio breakdown to better visualise the stock breakdown
+
+### Key Features:
+
+1. **Portfolio:** Users can conveniently see their Portfolio value and see the shares bought by them.
+2. **Sharable Portfolio:** Users can conviniently share their portfolio by sharing the portfolio page link and making their portfolio public.
+3. **Portfolio Confidentiality:** Users can make their Portfolio private and prevent other people from being able to view their portfolio
+
 
 ## Transaction History
 
