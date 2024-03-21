@@ -23,6 +23,18 @@
 6. Portfolio
 7. History
 
+## 1. Login
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/login.png" alt="Login" width="300" height="200" margin="10px">
+</div>
+
+## 2. Sign Up
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/register.png" alt="Register" width="300" height="200" margin="10px">
+</div>
+
 ## 3. Profile
 
 <div style="text-align: center;">
@@ -40,6 +52,24 @@
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/TradePage.png" alt="Trade Page Screenshot" width="550" height="300">
+</div>
+
+## 5. Watchlist
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/watchlist.png" alt="Watchlist" width="550" height="300">
+</div>
+
+## 6. Portfolio
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/portfolio.png" alt="Portfolio" width="550" height="300">
+</div>
+
+## 7. Transaction History
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/history.png" alt="History" width="550" height="300">
 </div>
 
 ### UI Features:
