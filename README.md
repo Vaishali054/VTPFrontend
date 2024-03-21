@@ -23,19 +23,19 @@
 6. Portfolio
 7. History
 
-## 1. Login
+## Login
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/login.png" alt="Login" width="300" height="200" margin="10px">
 </div>
 
-## 2. Sign Up
+## Sign Up
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/register.png" alt="Register" width="300" height="200" margin="10px">
 </div>
 
-## 3. Profile
+## Profile
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/ProfileCard.png" alt="Profile Card" width="300" height="200" margin="10px">
@@ -48,28 +48,10 @@
 2. **Editing Functionality:** Allows users to edit their profile (name, email, password) information conveniently.
 3. **Account Deletion:** Provides the functionality to securely delete the user account.
 
-## 4. Trade Page
+## Trade Page
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/TradePage.png" alt="Trade Page Screenshot" width="550" height="300">
-</div>
-
-## 5. Watchlist
-
-<div style="text-align: center;">
-    <img src="src/images/readmeImages/watchlist.png" alt="Watchlist" width="550" height="300">
-</div>
-
-## 6. Portfolio
-
-<div style="text-align: center;">
-    <img src="src/images/readmeImages/portfolio.png" alt="Portfolio" width="550" height="300">
-</div>
-
-## 7. Transaction History
-
-<div style="text-align: center;">
-    <img src="src/images/readmeImages/history.png" alt="History" width="550" height="300">
 </div>
 
 ### UI Features:
@@ -87,3 +69,21 @@
 
 - **Change:** Represents the absolute difference between the current price of the stock and its previous close.
 - **%Change:** Indicates the percentage change in the price of the stock compared to its previous close.
+
+##  Watchlist
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/watchlist.png" alt="Watchlist" width="550" height="300">
+</div>
+
+##  Portfolio
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/portfolio.png" alt="Portfolio" width="550" height="300">
+</div>
+
+## Transaction History
+
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/history.png" alt="History" width="550" height="300">
+</div>
