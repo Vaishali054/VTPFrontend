@@ -73,7 +73,10 @@ export default function TopNavBar() {
   }, []);
 
   React.useEffect(() => {
-    if ((location.pathname === "/" || location.pathname === "/register") && isLoggedIn) {
+    if (
+      (location.pathname === "/" || location.pathname === "/register") &&
+      isLoggedIn
+    ) {
       navigate(`/StocksList`);
     }
   }, [location, isLoggedIn]);

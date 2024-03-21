@@ -70,13 +70,13 @@
 - **Change:** Represents the absolute difference between the current price of the stock and its previous close.
 - **%Change:** Indicates the percentage change in the price of the stock compared to its previous close.
 
-##  Watchlist
+## Watchlist
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/watchlist.png" alt="Watchlist" width="550" height="300">
 </div>
 
-##  Portfolio
+## Portfolio
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/portfolio.png" alt="Portfolio" width="550" height="300">

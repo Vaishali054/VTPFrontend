@@ -109,7 +109,10 @@ const Portfolio = () => {
               </Pie>
               <Tooltip />
             </PieChart>
-            <div> <b></b>Total Portfolio Value: ${totalValue}</div>
+            <div>
+              {" "}
+              <b>Total Portfolio Value: ${totalValue}</b>
+            </div>
             <table className="styled-table">
               <thead>
                 <tr>
