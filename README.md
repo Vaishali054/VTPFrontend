@@ -59,6 +59,50 @@
     <img src="src/images/readmeImages/TradePage.png" alt="Trade Page Screenshot" width="550" height="300">
 </div>
 
+### Buy
+
+#### Buy Modal Window:
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/buyModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
+#### Successful Buy:
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/buySuccessful.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
+#### Buy Modal (with larger order amount than balance):
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/badBuyModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
+#### Failed  Buy:
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/buyFailure.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
+### Sell
+
+#### Sell Modal Window:
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/sellModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
+#### Successful Sell:
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/sellSuccessful.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
+#### Sell Modal (with insufficient number of stocks in possession):
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/badSellModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
+#### Failed  Sell:
+<div style="text-align: center;">
+    <img src="src/images/readmeImages/sellFailure.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
+</div>
+
 ### UI Features:
 
 1. **Sortable Columns:** Each column in the table can be sorted. (_Add other Material UI table functions as needed_)
@@ -67,7 +111,7 @@
 
 ### Key Features:
 
-1. **Stock Trading:** Users can conveniently buy and sell stocks.
+1. **Stock Trading:** Users can conveniently buy and sell stocks. These are updated, and the user can see the balance change reflected in the navbar on successful buy or sell.
 2. **Real-time Market Data:** Market data is refreshed periodically for up-to-date information. (Every 2 minutes)
 
 ### Market Data Details:
