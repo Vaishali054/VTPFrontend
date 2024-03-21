@@ -1,12 +1,10 @@
 import { buyStock, sellStock } from "../api/action";
 
 export const handleBuy = async ({
-  userId,
   userBalance,
   buyQuantity,
   selectedStockSymbol,
   currentPrice,
-  company_id,
   setUserBalance,
   handleBuyDialogClose,
 }) => {
@@ -30,14 +28,13 @@ export const handleBuy = async ({
   }
 
   alert(
-    `Your current balance is ${Number(userBalance) - Number(totalCost)}. You have bought ${buyQuantity} stocks of ${selectedStockSymbol} at a price of ${currentPrice} INR each for a total cost of ${totalCost} INR.`,
+    `BUY SUCCESSFUL: Your current balance is ${Number(userBalance) - Number(totalCost)}. You have bought ${buyQuantity} stocks of ${selectedStockSymbol} at a price of ${currentPrice} INR each for a total cost of ${totalCost} INR.`,
   );
   handleBuyDialogClose();
-  window.location.href = `/portfolio/${userId}`;
+  window.location.reload();
 };
 
 export const handleSell = async ({
-  userId,
   userBalance,
   sellQuantity,
   selectedStockSymbol,
@@ -48,23 +45,21 @@ export const handleSell = async ({
   const totalCost = sellQuantity * currentPrice;
 
   try {
-    const data = await sellStock({
-      symbol: selectedStockSymbol,
-      quantity: sellQuantity,
-      user: { id: userId },
-    });
+    const data = await sellStock(selectedStockSymbol, sellQuantity);
     if (data) {
+      alert(
+        `SELL SUCCESSFUL: Your current balance is ${Number(userBalance) + Number(totalCost)}. You have sold ${sellQuantity} stocks of ${selectedStockSymbol} at a price of ${currentPrice} INR each for a total cost of ${totalCost} INR.`,
+      );
       setUserBalance(Number(userBalance) + Number(totalCost));
     } else {
+      alert("You do not have enough of this stock to sell!")
       console.error("Failed to update user balance");
     }
   } catch (error) {
+    alert("Error connecting to server.")
     console.error("Error updating user balance:", error);
   }
 
-  alert(
-    `Your current balance is ${Number(userBalance) + Number(totalCost)}. You have sold ${sellQuantity} stocks of ${selectedStockSymbol} at a price of ${currentPrice} INR each for a total cost of ${totalCost} INR.`,
-  );
   handleSellDialogClose();
   window.location.reload();
 };

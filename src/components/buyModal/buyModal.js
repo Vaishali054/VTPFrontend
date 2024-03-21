@@ -21,12 +21,10 @@ const BuyModal = ({ stock, price, company_id }) => {
 
   const handleBuyAction = async () => {
     await handleBuy({
-      userId,
       userBalance,
       buyQuantity,
       selectedStockSymbol,
       currentPrice,
-      company_id,
       setUserBalance,
       handleBuyDialogClose,
     });
@@ -62,7 +60,12 @@ const BuyModal = ({ stock, price, company_id }) => {
   };
 
   const handleBuyQuantityChange = (event) => {
-    setBuyQuantity(event.target.value);
+    let newValue = event.target.value;
+    if (newValue < 0) {
+      alert("Quantity cannot be negative, try again");
+      newValue = 1;
+    }
+    setBuyQuantity(newValue);
   };
 
   return (

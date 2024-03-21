@@ -16,12 +16,18 @@ export const buyStock = async (symbol, quantity) => {
   }
 };
 
-export const sellStock = async (sellData) => {
+export const sellStock = async (symbol, quantity) => {
   try {
-    const res = await axiosInstance.post("/action/sell-stock", sellData);
+    const res = await axiosInstance.post("/action/sell-stock", {
+      symbol,
+      quantity,
+    });
     return res.data;
   } catch (e) {
     if (e instanceof AxiosError) {
+      if (e.response?.status === 404) {
+        return;
+      }
       return e.response?.data || e.message;
     }
     throw e;

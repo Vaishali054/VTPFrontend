@@ -20,9 +20,7 @@ const SellModal = ({ stock, price }) => {
   const [userId, setUserId] = React.useState("");
 
   const handleSellAction = async () => {
-    // Implement handleSell function from utilities
     await handleSell({
-      userId,
       userBalance,
       sellQuantity,
       selectedStockSymbol,
@@ -62,7 +60,12 @@ const SellModal = ({ stock, price }) => {
   };
 
   const handleSellQuantityChange = (event) => {
-    setSellQuantity(event.target.value);
+    let newValue = event.target.value;
+    if (newValue < 0) {
+      alert("Quantity cannot be negative, try again");
+      newValue = 1;
+    }
+    setSellQuantity(newValue);
   };
 
   return (
