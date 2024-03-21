@@ -5,6 +5,7 @@ import { registerUser } from "../../api/authAPI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import TopNavBar from "../../components/topNavbar/topNavBar";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -13,13 +14,14 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleRegister = async (event) => {
     event.preventDefault();
     console.log("Registering with:", name, email_id, password);
 
     if (password !== confirmPassword) {
-      console.error("Password and confirm password do not match.");
+      alert("Password and confirm password do not match.");
       return;
     }
 
@@ -27,12 +29,13 @@ export default function Register() {
       const { success, message, error } = await registerUser(
         name,
         email_id,
-        password,
+        password
       );
       if (success) {
-        alert("Registered successfully!");
-        window.location.href = "/";
+        navigate("/");
+        alert(" User registered successfully!");
       } else {
+        navigate(`/register`);
         if (
           error &&
           error.response &&
@@ -43,7 +46,6 @@ export default function Register() {
         } else {
           alert(message || "Registration failed. Please try again.");
         }
-        window.location.href = "/register";
       }
     } catch (error) {
       console.error("Error registering user:", error);

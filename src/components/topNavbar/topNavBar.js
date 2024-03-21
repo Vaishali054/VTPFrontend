@@ -123,7 +123,7 @@ export default function TopNavBar() {
               </IconButton>
             )}
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Titan Trade
+              VTP
             </Typography>
             {isLoggedIn && (
               <>
