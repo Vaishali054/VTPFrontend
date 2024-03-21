@@ -85,6 +85,7 @@
 
 1. **Stock Trading:** Users can conveniently buy and sell stocks added to their Watchlist.
 2. **Real-time Market Data:** Market data is refreshed periodically for up-to-date information. (Every 2 minutes)
+3. **Edit Watchlist:** Users can conveniently remove stocks from their Watchlist.
 
 ### Market Data Details:
 
