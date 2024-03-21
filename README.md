@@ -2,11 +2,16 @@
 
 1. Clone this repository.
 
-   ```bash
-   $ git clone https://github.com/JunihersGroup4/VTPFrontend.git
-   ```
+    ```bash
+    $ git clone https://github.com/JunihersGroup4/VTPFrontend.git
+    ```
+2. Get into the repository directory.
 
-2. Run the below commands.
+    ```bash
+    $ cd VTPFrontend
+    ```
+
+3. Run the below commands.
 
    ```bash
    $ yarn install
