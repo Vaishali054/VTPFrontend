@@ -136,7 +136,7 @@ const Portfolio = () => {
           </div>
         ) : (
           <div className="centered">
-            <p>Total Portfolio Value(INR) = 0</p>
+            <p><b>Total Portfolio Value(INR) = 0</b></p>
             <p>No stocks in possession currently.</p>
           </div>
         )}
