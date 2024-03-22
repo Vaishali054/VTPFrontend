@@ -52,11 +52,11 @@ export const handleSell = async ({
       );
       setUserBalance(Number(userBalance) + Number(totalCost));
     } else {
-      alert("You do not have enough of this stock to sell!")
+      alert("You do not have enough of this stock to sell!");
       console.error("Failed to update user balance");
     }
   } catch (error) {
-    alert("Error connecting to server.")
+    alert("Error connecting to server.");
     console.error("Error updating user balance:", error);
   }
 

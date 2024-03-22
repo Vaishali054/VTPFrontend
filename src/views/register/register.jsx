@@ -29,7 +29,7 @@ export default function Register() {
       const { success, message, error } = await registerUser(
         name,
         email_id,
-        password
+        password,
       );
       if (success) {
         navigate(`/`);

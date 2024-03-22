@@ -17,7 +17,6 @@ const BuyModal = ({ stock, price, company_id }) => {
   const [selectedStockSymbol, setSelectedStockSymbol] = React.useState("");
   const [currentPrice, setCurrentPrice] = React.useState(0);
   const [userBalance, setUserBalance] = React.useState(0);
-  const [userId, setUserId] = React.useState("");
 
   const handleBuyAction = async () => {
     await handleBuy({
@@ -33,9 +32,7 @@ const BuyModal = ({ stock, price, company_id }) => {
   const fetchUserData = async () => {
     try {
       const data = await fetchProfile();
-      // console.log(data)
       if (data) {
-        setUserId(data.user.id);
         setUserBalance(data.user.current_Balance);
       } else {
         console.error("Failed to fetch user data");

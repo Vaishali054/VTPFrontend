@@ -2,14 +2,15 @@
 
 1. Clone this repository.
 
-    ```bash
-    $ git clone https://github.com/JunihersGroup4/VTPFrontend.git
-    ```
+   ```bash
+   $ git clone https://github.com/JunihersGroup4/VTPFrontend.git
+   ```
+
 2. Get into the repository directory.
 
-    ```bash
-    $ cd VTPFrontend
-    ```
+   ```bash
+   $ cd VTPFrontend
+   ```
 
 3. Run the below commands.
 
@@ -40,6 +41,15 @@
     <img src="src/images/readmeImages/register.png" alt="Register" width="300" height="200" margin="10px">
 </div>
 
+### Key Features
+
+1.  Prevents duplicate email registrations.
+2.  Sets portfolios to private by default upon signup.
+3.  Passwords are securely hashed using bcrypt.
+4.  Access control:
+    - Logged-in users cannot access register and login pages.
+    - Logged-out users cannot access tradePage, private portfolio, watchlist, and history.
+
 ## Profile
 
 <div style="text-align: center;">
@@ -62,21 +72,25 @@
 ### Buy
 
 #### Buy Modal Window:
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/buyModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
 
 #### Successful Buy:
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/buySuccessful.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
 
 #### Buy Modal (with larger order amount than balance):
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/badBuyModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
 
-#### Failed  Buy:
+#### Failed Buy:
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/buyFailure.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
@@ -84,28 +98,32 @@
 ### Sell
 
 #### Sell Modal Window:
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/sellModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
 
 #### Successful Sell:
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/sellSuccessful.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
 
 #### Sell Modal (with insufficient number of stocks in possession):
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/badSellModal.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
 
-#### Failed  Sell:
+#### Failed Sell:
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/sellFailure.png" alt="Trade Page Screenshot" width="300" height="200" margin="10px">
 </div>
 
 ### UI Features:
 
-1. **Sortable Columns:** Each column in the table can be sorted. (_Add other Material UI table functions as needed_)
+1. **Sortable Columns:** Each column in the table can be sorted.
 2. **Stock Search:** Users can search for a particular stock.
 3. **Adjustable Column Count:** Users can customize the number of columns displayed per stock.
 
@@ -151,7 +169,6 @@
 1. **Portfolio:** Users can conveniently see their Portfolio value and see the shares bought by them.
 2. **Sharable Portfolio:** Users can conviniently share their portfolio by sharing the portfolio page link and making their portfolio public.
 3. **Portfolio Confidentiality:** Users can make their Portfolio private and prevent other people from being able to view their portfolio
-
 
 ## Transaction History
 
