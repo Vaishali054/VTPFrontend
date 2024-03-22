@@ -50,6 +50,8 @@
     - Logged-in users cannot access register and login pages.
     - Logged-out users cannot access tradePage, private portfolio, watchlist, and history.
 
+## Profile
+
 <div style="text-align: center;">
     <img src="src/images/readmeImages/ProfileCard.png" alt="Profile Card" width="300" height="200" margin="10px">
     <img src="src/images/readmeImages/EditProfile.png" alt="Alt Text" width="230" height="200"  margin="10px">
