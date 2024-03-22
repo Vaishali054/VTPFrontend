@@ -32,7 +32,7 @@ export default function Register() {
         password,
       );
       if (success) {
-        navigate(`/`);
+        window.location.href = '/';
         alert("User registered successfully!");
       } else {
         if (
@@ -45,6 +45,7 @@ export default function Register() {
         } else {
           alert(message || "Registration failed. Please try again.");
         }
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error registering user:", error);

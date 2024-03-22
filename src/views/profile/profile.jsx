@@ -46,7 +46,7 @@ export default function Profile() {
 
         if (data) {
           alert(data.message);
-          window.location.reload();
+          window.location.href = "/";
         } else {
           alert("Error occurred while deleting account");
         }
