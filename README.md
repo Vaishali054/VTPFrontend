@@ -40,7 +40,15 @@
     <img src="src/images/readmeImages/register.png" alt="Register" width="300" height="200" margin="10px">
 </div>
 
-## Profile
+### Key Features
+
+1.  Prevents duplicate email registrations.
+2.  Sets portfolios to private by default upon signup.
+3.  Passwords are securely hashed using bcrypt.
+4.  Access control:
+       - Logged-in users cannot access register and login pages.
+       - Logged-out users cannot access tradePage, private portfolio, watchlist, and history.
+
 
 <div style="text-align: center;">
     <img src="src/images/readmeImages/ProfileCard.png" alt="Profile Card" width="300" height="200" margin="10px">
@@ -105,7 +113,7 @@
 
 ### UI Features:
 
-1. **Sortable Columns:** Each column in the table can be sorted. (_Add other Material UI table functions as needed_)
+1. **Sortable Columns:** Each column in the table can be sorted.
 2. **Stock Search:** Users can search for a particular stock.
 3. **Adjustable Column Count:** Users can customize the number of columns displayed per stock.
 
