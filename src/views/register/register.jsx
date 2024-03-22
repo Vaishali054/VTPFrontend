@@ -32,10 +32,9 @@ export default function Register() {
         password
       );
       if (success) {
-        navigate("/");
-        alert(" User registered successfully!");
+        navigate(`/`);
+        alert("User registered successfully!");
       } else {
-        navigate(`/register`);
         if (
           error &&
           error.response &&

@@ -17,13 +17,13 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await handleLogin(email, password);
-      if (response.message) {
+      if (response.message && response.message === "Login successful") {
         alert(response.message);
         document.cookie = `token=${response.token}; path=/`;
         navigate(`/StocksList`);
       } else {
         alert(response.message);
-        navigate(`/`);
+        navigate("/");
       }
     } catch (error) {
       console.error("Error during login:", error);
