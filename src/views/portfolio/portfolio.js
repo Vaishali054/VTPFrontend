@@ -16,7 +16,7 @@ const Portfolio = () => {
     try {
       const response = await fetchPortfolio(userId);
       setPortfolio(response.portfolio);
-      if (response.message === "Unauthorized" || response.message === 'User not available!') {
+      if (response.message === "Unauthorized") {
         setPortfolio([]);
       }
       if (response.status !== "private") {
