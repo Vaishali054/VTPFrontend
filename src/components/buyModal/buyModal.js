@@ -11,7 +11,7 @@ import {
 import { handleBuy } from "../../utilities/buySellUtils";
 import { fetchProfile } from "../../api/profile";
 
-const BuyModal = ({ stock, price, company_id }) => {
+const BuyModal = ({ stock, price}) => {
   const [openBuyDialog, setOpenBuyDialog] = React.useState(false);
   const [buyQuantity, setBuyQuantity] = React.useState(1);
   const [selectedStockSymbol, setSelectedStockSymbol] = React.useState("");
