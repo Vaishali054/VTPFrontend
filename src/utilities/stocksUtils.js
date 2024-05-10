@@ -146,12 +146,10 @@ export const columns = [
           <BuyModal
             stock={params.row.symbol}
             price={params.row.currentprice}
-            company_id={params.row.company_id}
           />
           <SellModal
             stock={params.row.symbol}
             price={params.row.currentprice}
-            company_id={params.row.company_id}
           />
           <IconButton
             onClick={() => handleAddToWatchlist(params.row.symbol)}
@@ -182,7 +180,6 @@ export const formatRows = (data, isSuccess) => {
       change: stockData.change,
       pChange: stockData.pChange,
       symbol: stockData.symbol,
-      company_id: stockData.Company_Id,
     }));
   }
   return rows;

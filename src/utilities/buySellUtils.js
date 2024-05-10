@@ -31,7 +31,6 @@ export const handleBuy = async ({
     `BUY SUCCESSFUL: Your current balance is ${Number(userBalance) - Number(totalCost)}. You have bought ${buyQuantity} stocks of ${selectedStockSymbol} at a price of ${currentPrice} INR each for a total cost of ${totalCost} INR.`,
   );
   handleBuyDialogClose();
-  window.location.reload();
 };
 
 export const handleSell = async ({
@@ -61,5 +60,4 @@ export const handleSell = async ({
   }
 
   handleSellDialogClose();
-  window.location.reload();
 };
