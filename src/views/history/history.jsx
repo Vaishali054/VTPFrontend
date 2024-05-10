@@ -21,7 +21,7 @@ const TransactionsPage = () => {
 
   const convertUTCToIST = (utcDate) => {
     const date = new Date(utcDate);
-    const istOffset = 5.5 * 60 * 60 * 1000;
+    const istOffset = 5.5 * 60 * 60 ;
     const istDate = new Date(date.getTime() + istOffset);
     return istDate.toLocaleString();
   };
@@ -39,7 +39,6 @@ const TransactionsPage = () => {
               <th>Price</th>
               <th>Quantity</th>
               <th>Transaction Type</th>
-              <th>Transaction Date</th>
               <th>Transaction Time</th>
             </tr>
           </thead>
@@ -52,8 +51,7 @@ const TransactionsPage = () => {
                   <td>{transaction.price}</td>
                   <td>{transaction.quantity}</td>
                   <td>{transaction.transactionType}</td>
-                  <td>{transaction.transactionDate}</td>
-                  <td>{convertUTCToIST(transaction.transactionTime)}</td>{" "}
+                  <td>{convertUTCToIST(transaction.transactionDate)}</td>{" "}
                   {/* Convert time to IST */}
                 </tr>
               ))}
