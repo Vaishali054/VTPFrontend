@@ -5,7 +5,6 @@ import { registerUser } from "../../api/authAPI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import TopNavBar from "../../components/topNavbar/topNavBar";
-import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -14,11 +13,9 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const navigate = useNavigate();
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    console.log("Registering with:", name, email_id, password);
 
     if (password !== confirmPassword) {
       alert("Password and confirm password do not match.");
